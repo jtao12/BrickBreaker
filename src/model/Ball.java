@@ -5,6 +5,7 @@ public class Ball extends Sprite {
     private int x_velo;
     private int y_velo;
     private boolean is_collided;
+    private boolean is_launched;
     private final static int DIAMETER = 10;
     private final static int X_OFFSET = Game.WIDTH / 2;
     private final static int Y_OFFSET = (Paddle.HEIGHT / 2) + (DIAMETER / 2) + Paddle.Y_OFFSET;
@@ -15,10 +16,19 @@ public class Ball extends Sprite {
         this.x_velo = 0;
         this.y_velo = 0;
         this.is_collided = false;
+        this.is_launched = false;
     }
     public void changevelocity(int x, int y){
         this.x_velo = x;
         this.y_velo = y;
+    }
+
+    public boolean getLaunchStatus(){
+        return is_launched;
+    }
+
+    public boolean getCollisionStatus(){
+        return is_collided;
     }
 
     @Override

@@ -47,18 +47,49 @@ public class Game {
 
     // Responds to key press codes
     // modifies: this
-    // effects:  moves paddle, fires ball at the beginning
+    // effects:  moves paddle, launches ball at the beginning
     public void keyPressed(int keyCode) {
         if (keyCode == KeyEvent.VK_KP_LEFT || keyCode == KeyEvent.VK_LEFT)
-            paddle.moveleft();
+            paddle.moveLeft();
         else if (keyCode == KeyEvent.VK_KP_RIGHT || keyCode == KeyEvent.VK_RIGHT)
-            paddle.moveright();
-        else if (keyCode == KeyEvent.VK_SPACE)
+            paddle.moveRight();
+        else if (keyCode == KeyEvent.VK_SPACE && !ball.getLaunchStatus())
             launchBall();
         else if (keyCode == KeyEvent.VK_R && isGameOver)
             reset();
         else if (keyCode == KeyEvent.VK_X)
             System.exit(0);
     }
+
+    // moves the sprites
+    // modifies: this
+    // effects: moves sprites to location at next clock tick
+    private void moveSprites() {
+        for (Sprite next : sprites) {
+            next.move();
+        }
+    }
+
+    // Sets / resets the game
+    // modifies: this
+    // effects:  resets number of missiles in play and number of invaders destroyed;
+    //           game is not over
+    private void reset() {
+        isGameOver = false;
+        numBricksLeft = 15;
+
+    }
+
+    // Is game over?
+    // Effects: returns true if game is over, false otherwise
+    public boolean isOver() {
+        return isGameOver;
+    }
+
+    public int getNumBricksLeft() {
+        return numBricksLeft;
+    }
+
+
 
 }
