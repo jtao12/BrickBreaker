@@ -16,6 +16,7 @@ public class Paddle extends Sprite {
     public static final int X_OFFSET =  Game.WIDTH / 2;
     public static final int Y_OFFSET = 50;
     public static final int PADDLE_SPEED = 2;
+    public static final Color COLOR = new Color(250,128,20);
 
     public Paddle(){
         super(WIDTH,HEIGHT,X_OFFSET,Y_OFFSET);
@@ -39,8 +40,25 @@ public class Paddle extends Sprite {
     }
 
     public void draw(Graphics g){
+        Color currcolour = g.getColor();
+        
+        createpaddle();
+
+
+
         return;
     }
+
+
+    public Polygon createpaddle(){
+        Polygon paddle = new Polygon();
+        paddle.addPoint(0,0);
+        paddle.addPoint(0, HEIGHT);
+        paddle.addPoint(WIDTH,0);
+        paddle.addPoint(WIDTH, HEIGHT);
+        return paddle;
+    }
+
 
     public void move(){
         return;
