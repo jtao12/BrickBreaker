@@ -13,16 +13,14 @@ public class Brick extends Sprite {
 
     public static final int WIDTH = 50;
     public static final int HEIGHT = 10;
-    public static final int X_OFFSET =  Game.WIDTH / 2;
-    public static final int Y_OFFSET = 50;
-    public ArrayList<Color> COLORS;
 
-    public Brick(){
+    public Brick(int X_OFFSET, int Y_OFFSET){
         super(WIDTH,HEIGHT,X_OFFSET,Y_OFFSET);
     }
     // TODO ; allocate list of colours for bricks
 
     public void draw(Graphics g){
+        
 
     }
 
