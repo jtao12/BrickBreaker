@@ -22,23 +22,16 @@ public class Game_View extends JPanel {
     }
 
     @Override
-    protected void paintComponet(Graphics g){
+    protected void paintComponent(Graphics g){
         super.paintComponent(g);
-        drawGame(g); // TODO: make this f(x)
+        drawGame(g);
     }
 
 
     private void drawGame(Graphics g){
+        game.draw(g);
         return;
-     //  game.draw(g);
     }
-
-
-
-
-
-
-
 
 
 

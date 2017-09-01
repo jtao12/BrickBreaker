@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +32,7 @@ public class Game {
     // effects:  sets up list of sprites bricks, paddle, and ball
     private void initializeSprites() {
         sprites.clear();
-        initalizeBricks(); // TODO
+       // initalizeBricks(); // TODO
         paddle = new Paddle();
         ball = new Ball();
         sprites.add(paddle);
@@ -42,12 +43,8 @@ public class Game {
     // effects:  sets up list of sprites bricks
     private void initializeBricks() {
         for (int i = 0; i < 3; i++){
-            Brick abrick = new Brick(600,500,)
-
         }
-
-
-
+        return;
     }
     // TODO: Refractor this to controller class
     // Responds to key press codes
@@ -66,11 +63,16 @@ public class Game {
             System.exit(0);
     }
 
+    public void draw(Graphics g){
+        for(Sprite next: sprites){
+            next.draw(g);
+        }
+    }
+
 
     // moves the sprites
     // modifies: this
     // effects: moves sprites to location at next clock tick
-    // TODO: can we change this to just have a seperate f(x)'s that move paddle and ball ?
     private void moveBall() {
         ball.move();
     }
@@ -84,8 +86,6 @@ public class Game {
         numBricksLeft = 15;
 
     }
-
-    // TODO
 
     public void update(){
         ball.move();
