@@ -40,7 +40,7 @@ public abstract class Sprite {
     // Moves the sprite
     // modifies: this
     // effects:  sprite has been moved
-    public abstract void move();
+    public abstract void move() throws invalidMove;
 
     // Draws the sprite
     // modifies: g

@@ -22,7 +22,7 @@ import javax.swing.Timer;
 @SuppressWarnings("serial")
 public class BrickBreaker extends JFrame {
 
-    private static final int INTERVAL = 20;
+    private static final int INTERVAL = 4;
     private Game game;
     private Timer t;
 
@@ -47,12 +47,9 @@ public class BrickBreaker extends JFrame {
     // effects:  initializes a timer that updates game each
     //           INTERVAL milliseconds
     private void addTimer() {
-        t = new Timer(INTERVAL, new ActionListener(){
-            @Override
-            public void actionPerformed(ActionEvent ae) {
+        t = new Timer(INTERVAL,
                 game.update();
                 gp.repaint();
-                sp.update();
             }
         });
     }

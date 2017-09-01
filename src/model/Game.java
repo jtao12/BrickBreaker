@@ -15,7 +15,7 @@ public class Game {
     private List<Sprite> sprites;
     private Paddle paddle;
     private Ball ball;
-    private ArrayList<Brick>
+    private ArrayList<Brick> bricks;
     private boolean isGameOver;
     private int numBricksLeft;   //
 
@@ -31,7 +31,7 @@ public class Game {
     // effects:  sets up list of sprites bricks, paddle, and ball
     private void initializeSprites() {
         sprites.clear();
-        initalizeBricks();
+        initalizeBricks(); // TODO
         paddle = new Paddle();
         ball = new Ball();
         sprites.add(paddle);
@@ -65,7 +65,7 @@ public class Game {
     // moves the sprites
     // modifies: this
     // effects: moves sprites to location at next clock tick
-    // TODO: can we change this to just have a move for paddle and ball?
+    // TODO: can we change this to just have a seperate f(x)'s that move paddle and ball ?
     private void moveBall() {
         ball.move();
     }
@@ -78,6 +78,12 @@ public class Game {
         isGameOver = false;
         numBricksLeft = 15;
 
+    }
+
+    // TODO
+
+    private void update(){
+        return;
     }
 
     // Is game over?

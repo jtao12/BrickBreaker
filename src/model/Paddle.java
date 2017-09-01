@@ -45,10 +45,8 @@ public class Paddle extends Sprite {
 
     public void draw(Graphics g){
         Polygon Paddle = createpaddle();
-        Color savedCol = g.getColor();
         g.setColor(COLOR);
         g.fillPolygon(Paddle);
-        g.setColor(savedCol);
         return;
     }
 

@@ -15,25 +15,28 @@ import javax.swing.JFrame;
 
 public class Brick extends Sprite {
 
-    private static final int WIDTH = 50;
-    private static final int HEIGHT = 10;
-    private boolean is_inplay;
-    private Color  colour_i_am;
+private static final int WIDTH=50;
+private static final int HEIGHT=10;
+private boolean is_inplay;
+private Color colour_i_am;
 
-    public Brick(int X_OFFSET, int Y_OFFSET,Color color){
+public Brick(int X_OFFSET,int Y_OFFSET,Color color){
         super(WIDTH,HEIGHT,X_OFFSET,Y_OFFSET);
         colour_i_am = color;
         is_inplay = true; // seet default status to in_play
-    }
+        }
 
 
-    public void draw(Graphics g){
-        Polygon a_brick = new Polygon();
-        a_brick.addPoint(x,y); // top left corner
-        a_brick.addPoint(x,y - this.height);
-        a_brick.addPoint(x + this.width, y);
-        a_brick.addPoint(x + this.width, y - this.height);
-        g.drawPolygon(a_brick);
-    }
+public void draw(Graphics g){
+        g.setColor(this.colour_i_am);
+        g.fillRect(x,y,width,height);
+        }
+
+
+
+public void move() throws invalidMove{
+        throw new invalidMove("Brick's Can't Move");
+        }
+
 
 }
