@@ -38,10 +38,15 @@ public class Game {
         sprites.add(ball);
     }
 
-    // Initializes sprites
-    // modifies: this
-    // effects:  sets up list of sprites bricks, paddle, and ball
+    // Initializes bricks
+    // effects:  sets up list of sprites bricks
     private void initializeBricks() {
+        for (int i = 0; i < 3; i++){
+            Brick abrick = new Brick(600,500,)
+
+        }
+
+
 
     }
     // TODO: Refractor this to controller class
@@ -82,7 +87,8 @@ public class Game {
 
     // TODO
 
-    private void update(){
+    public void update(){
+        ball.move();
         return;
     }
 

@@ -60,8 +60,4 @@ public class Ball extends Sprite {
     }
 
 
-    // outofbounds f(x) for BALL
-    // moves ball position
-    //
-    // can't move paddle until game starts
 }

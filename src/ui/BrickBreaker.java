@@ -20,6 +20,8 @@ import javax.swing.Timer;
  * game is played
  */
 @SuppressWarnings("serial")
+
+// Let this be our controller
 public class BrickBreaker extends JFrame {
 
     private static final int INTERVAL = 4;
@@ -33,10 +35,9 @@ public class BrickBreaker extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(true);
         game = new Game();
-
         addKeyListener(new KeyHandler());
         pack();
-        centreOnScreen();
+     // TODO   centreOnScreen();
         setVisible(true);
         addTimer();
         t.start();

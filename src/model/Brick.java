@@ -21,7 +21,7 @@ private boolean is_inplay;
 private Color colour_i_am;
 
 public Brick(int X_OFFSET,int Y_OFFSET,Color color){
-        super(WIDTH,HEIGHT,X_OFFSET,Y_OFFSET);
+        super(X_OFFSET,Y_OFFSET, WIDTH, HEIGHT);
         colour_i_am = color;
         is_inplay = true; // seet default status to in_play
         }
