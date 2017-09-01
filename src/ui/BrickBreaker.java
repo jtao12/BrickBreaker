@@ -26,6 +26,7 @@ public class BrickBreaker extends JFrame {
 
     private static final int INTERVAL = 4;
     private Game game;
+    private Game_View game_view;
     private Timer t;
 
     // Constructs main window
@@ -35,9 +36,11 @@ public class BrickBreaker extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(true);
         game = new Game();
+        game_view = new Game_View(game);
+        add(game_view);
         addKeyListener(new KeyHandler());
         pack();
-     // TODO   centreOnScreen();
+        centreOnScreen();
         setVisible(true);
         addTimer();
         t.start();
@@ -48,11 +51,16 @@ public class BrickBreaker extends JFrame {
     // effects:  initializes a timer that updates game each
     //           INTERVAL milliseconds
     private void addTimer() {
-        t = new Timer(INTERVAL,
+        t = new Timer(INTERVAL, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 game.update();
-                gp.repaint();
+                game_view.repaint();
+
             }
-        });
+        }
+
+        );
     }
 
     // Centres frame on desktop
