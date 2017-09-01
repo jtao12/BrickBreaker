@@ -19,6 +19,7 @@ public class Game {
     private ArrayList<Brick> bricks;
     private boolean isGameOver;
     private int numBricksLeft;   //
+    private static final Color COLOR = new Color(128, 50, 20);
 
     public Game(){
         sprites = new ArrayList<Sprite>();
@@ -32,7 +33,7 @@ public class Game {
     // effects:  sets up list of sprites bricks, paddle, and ball
     private void initializeSprites() {
         sprites.clear();
-       // initalizeBricks(); // TODO
+        initializeBricks(); // TODO
         paddle = new Paddle();
         ball = new Ball();
         sprites.add(paddle);
@@ -43,8 +44,9 @@ public class Game {
     // effects:  sets up list of sprites bricks
     private void initializeBricks() {
         for (int i = 0; i < 3; i++){
+            Brick aBrick = new Brick(20 + i * 50,100,COLOR);
+            sprites.add(aBrick);
         }
-        return;
     }
     // TODO: Refractor this to controller class
     // Responds to key press codes
