@@ -9,24 +9,31 @@ import javax.swing.JFrame;
 /**
  * Created by justi on 8/28/2017.
  */
+
+
+// TODO; do we want to change the color of the brick upon collision
+
 public class Brick extends Sprite {
 
-    public static final int WIDTH = 50;
-    public static final int HEIGHT = 10;
+    private static final int WIDTH = 50;
+    private static final int HEIGHT = 10;
+    private boolean is_inplay;
+    private Color  colour_i_am;
 
-    public Brick(int X_OFFSET, int Y_OFFSET){
+    public Brick(int X_OFFSET, int Y_OFFSET,Color color){
         super(WIDTH,HEIGHT,X_OFFSET,Y_OFFSET);
+        colour_i_am = color;
+        is_inplay = true; // seet default status to in_play
     }
-    // TODO ; allocate list of colours for bricks
+
 
     public void draw(Graphics g){
-        
-
-    }
-
-
-    public void move(){
-        return;
+        Polygon a_brick = new Polygon();
+        a_brick.addPoint(x,y); // top left corner
+        a_brick.addPoint(x,y - this.height);
+        a_brick.addPoint(x + this.width, y);
+        a_brick.addPoint(x + this.width, y - this.height);
+        g.drawPolygon(a_brick);
     }
 
 }

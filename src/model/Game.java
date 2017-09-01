@@ -11,13 +11,13 @@ import java.util.Random;
 public class Game {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
-    public static final Random RND = new Random();
-
+    public static final Random RND = new Random(); // TODO: What is this for?????
     private List<Sprite> sprites;
     private Paddle paddle;
     private Ball ball;
+    private ArrayList<Brick>
     private boolean isGameOver;
-    private int numBricksLeft;
+    private int numBricksLeft;   //
 
     public Game(){
         sprites = new ArrayList<Sprite>();
@@ -44,7 +44,7 @@ public class Game {
     private void initializeBricks() {
 
     }
-
+    // TODO: Refractor this to controller class
     // Responds to key press codes
     // modifies: this
     // effects:  moves paddle, launches ball at the beginning
@@ -54,20 +54,20 @@ public class Game {
         else if (keyCode == KeyEvent.VK_KP_RIGHT || keyCode == KeyEvent.VK_RIGHT)
             paddle.moveRight();
         else if (keyCode == KeyEvent.VK_SPACE && !ball.getLaunchStatus())
-            launchBall();
+            ball.launchBall();
         else if (keyCode == KeyEvent.VK_R && isGameOver)
             reset();
         else if (keyCode == KeyEvent.VK_X)
             System.exit(0);
     }
 
+
     // moves the sprites
     // modifies: this
     // effects: moves sprites to location at next clock tick
-    private void moveSprites() {
-        for (Sprite next : sprites) {
-            next.move();
-        }
+    // TODO: can we change this to just have a move for paddle and ball?
+    private void moveBall() {
+        ball.move();
     }
 
     // Sets / resets the game

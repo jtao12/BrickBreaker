@@ -23,6 +23,12 @@ public class Ball extends Sprite {
         this.y_velo = y;
     }
 
+
+    public void launchBall(){
+        changevelocity(0,10); // launch ball and set initial speed to 10 pixels/sec
+        is_launched = true;
+    }
+
     public boolean getLaunchStatus(){
         return is_launched;
     }
@@ -32,7 +38,7 @@ public class Ball extends Sprite {
     }
 
     @Override
-    public void move(){
+    public void move(){      // TODO: changes x and y and then we need to redraw the ball...I think
         handleboundary();
         x +=  x_velo;
         y +=  y_velo;
@@ -43,6 +49,8 @@ public class Ball extends Sprite {
             // TODO // trigger game over
         } else if (y == 0){return;}
     }
+
+
     // TODO
     public void draw(Graphics g){
         Color savedCol = g.getColor();
