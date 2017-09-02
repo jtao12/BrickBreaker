@@ -7,8 +7,8 @@ public class Ball extends Sprite {
     private boolean is_collided;
     private boolean is_launched;
     private final static int DIAMETER = 10;
-    private final static int X_OFFSET = Game.WIDTH / 2;
-    private final static int Y_OFFSET = (Paddle.HEIGHT / 2) + (DIAMETER / 2) + Paddle.Y_OFFSET;
+    private final static int X_OFFSET = (Game.WIDTH / 2) - DIAMETER / 2 ;
+    private final static int Y_OFFSET = Paddle.Y_OFFSET - Paddle.HEIGHT - (DIAMETER / 2) ;
     private static final Color COLOR = new Color(65, 150, 188);
 
     public Ball(){

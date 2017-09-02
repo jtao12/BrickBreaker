@@ -13,8 +13,8 @@ import java.awt.*;
 public class Paddle extends Sprite {
     protected static final int WIDTH = 50;
     protected static final int HEIGHT = 10;
-    protected static final int X_OFFSET =  Game.WIDTH / 2;
-    protected static final int Y_OFFSET = 550;
+    protected static final int X_OFFSET =  Game.WIDTH / 2 - WIDTH / 2 ;
+    protected static final int Y_OFFSET = Game.HEIGHT - 20;
     protected static final int PADDLE_SPEED = 2;
     protected static final Color COLOR = new Color(250, 250, 250);
 

@@ -44,7 +44,7 @@ public class Game {
     // effects:  sets up list of sprites bricks
     private void initializeBricks() {
         for (int i = 0; i < 3; i++){
-            Brick aBrick = new Brick(20 + i * 50,100,COLOR);
+            Brick aBrick = new Brick(20 * i + i * 50,100,COLOR);
             sprites.add(aBrick);
         }
     }
