@@ -13,6 +13,21 @@ public class Game {
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
     public static final Random RND = new Random(); // TODO: What is this for?????
+
+    /** Number of bricks per row */
+    private static final int NBRICKS_PER_ROW = 5;
+    /** Number of rows of bricks */
+    private static final int NBRICK_ROWS = 5;
+    /** Separation between bricks */
+    private static final int BRICK_SEP = 5;
+    /** Width of a brick */
+    private static final int BRICK_WIDTH =
+            (WIDTH - (NBRICKS_PER_ROW - 1) * BRICK_SEP) / NBRICKS_PER_ROW;
+    /** Height of a brick */
+    private static final int BRICK_HEIGHT = 30;
+    /** Offset of the top brick row from the top */
+    private static final int BRICK_Y_OFFSET = 70;
+
     private List<Sprite> sprites;
     private Paddle paddle;
     private Ball ball;
@@ -42,12 +57,44 @@ public class Game {
 
     // Initializes bricks
     // effects:  sets up list of sprites bricks
+//    private void initializeBricks() {
+//        for (int i = 0; i < 5; i++){
+//            Brick aBrick = new Brick(20 * i + i * 50,100,COLOR);
+//            sprites.add(aBrick);
+//        }
+//    }
+
     private void initializeBricks() {
-        for (int i = 0; i < 5; i++){
-            Brick aBrick = new Brick(20 * i + i * 50,100,COLOR);
+        for( int row = 0; row < 5; row++ ) {
+
+            for (int column = 0; column < 6; column++) {
+
+				/* To get the x coordinate for the starting width:
+				 * 	start at the center width,
+				 * 	subtract half of the bricks (width) in the row,
+				 * 	subtract half of the separations (width) between the bricks in the row,
+				 * now you're at where the first brick should be,
+				 * so for the starting point of the next bricks in the column, you need to:
+				 * 	add a brick width
+				 * 	add a separation width
+				 */
+
+            int	x = WIDTH/2 - (NBRICKS_PER_ROW*BRICK_WIDTH)/2 - ((NBRICKS_PER_ROW-1)*BRICK_SEP)/2 + column*BRICK_WIDTH + column*BRICK_SEP;
+
+				/* To get the y coordinate of the starting height:
+				 * 	start at the given length from the top for the first row,
+				 * 	then add a brick height and a brick separation for each of the following rows
+				 */
+
+            int	y = HEIGHT/2 + row*BRICK_HEIGHT + row*BRICK_SEP;
+
+            Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, COLOR);
             sprites.add(aBrick);
+
+
         }
     }
+}
     // TODO: Refractor this to controller class
     // Responds to key press codes
     // modifies: this
@@ -79,6 +126,10 @@ public class Game {
         ball.move();
     }
 
+    private void movePaddle() {
+        paddle.moveLeft();
+    }
+
 
 
 
@@ -94,6 +145,7 @@ public class Game {
 
     public void update() {
        moveBall();
+       movePaddle();
        checkCollisions();
 
 

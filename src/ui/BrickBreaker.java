@@ -17,7 +17,7 @@ import java.awt.event.*;
 // Let this be our controller
 public class BrickBreaker extends JFrame {
 
-    private static final int INTERVAL = 4;
+    private static final int INTERVAL = 1;
     private Game game;
     private Game_View game_view;
     private Timer t;

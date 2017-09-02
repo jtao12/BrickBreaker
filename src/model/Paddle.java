@@ -35,8 +35,8 @@ public class Paddle extends Sprite {
     }
 
     public void moveLeft(){
-       // x = x - PADDLE_SPEED;
-        this.x = 9;
+        x = x - PADDLE_SPEED;
+
      //   handleBoundary_x();
     }
 
