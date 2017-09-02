@@ -1,31 +1,33 @@
 package model;
 import java.awt.*;
+import java.util.Random;
 
 public class Ball extends Sprite {
-    private int x_velo;
-    private int y_velo;
+    private int x_velocity;
+    private int y_velocity;
     private boolean is_collided;
     private boolean is_launched;
     private final static int DIAMETER = 10;
     private final static int X_OFFSET = (Game.WIDTH / 2) - DIAMETER / 2 ;
     private final static int Y_OFFSET = Paddle.Y_OFFSET - Paddle.HEIGHT - (DIAMETER / 2) ;
     private static final Color COLOR = new Color(65, 150, 188);
+    public static final Random RND = new Random();
+
 
     public Ball(){
         super(X_OFFSET, Y_OFFSET, DIAMETER, DIAMETER);
-        this.x_velo = 0;
-        this.y_velo = 0;
+        this.x_velocity = 0;
+        this.y_velocity = 0;
         this.is_collided = false;
         this.is_launched = false;
     }
-    public void changevelocity(int x, int y){
-        this.x_velo = x;
-        this.y_velo = y;
+    public void changeVelocity(int x, int y){
+        this.x_velocity = x;
+        this.y_velocity = y;
     }
 
-
     public void launchBall(){
-        changevelocity(0,10); // launch ball and set initial speed to 10 pixels/sec
+        changeVelocity(RND.nextInt(3 - -3) -3,-7); // launch ball and set initial speed to 10 pixels/sec
         is_launched = true;
     }
 
@@ -37,17 +39,33 @@ public class Ball extends Sprite {
         return is_collided;
     }
 
-    @Override
-    public void move(){      // TODO: changes x and y and then we need to redraw the ball...I think
-        handleboundary();
-        x +=  x_velo;
-        y +=  y_velo;
+    public int getX_velocity(){
+        return x_velocity;
     }
 
-    public void handleboundary() {
-        if (y == 0 || y < 0) {
-            // TODO // trigger game over
-        } else if (y == 0){return;}
+    public int getY_velocity(){
+        return y_velocity;
+    }
+
+    @Override
+    public void move(){      // TODO: changes x and y and then we need to redraw the ball...I think
+        handleBoundary();
+//        double rnd_temp = RND.nextDouble() * 3;
+//        x += x_velocity * rnd_temp;
+        x += x_velocity;
+        y += y_velocity;
+
+    }
+
+    public void handleBoundary() {
+        if (y <= 0 || y >= 600) {
+            changeVelocity(x_velocity, -y_velocity);
+        }
+
+        if (x <= 0 || x >= 800) {
+            changeVelocity(-x_velocity, y_velocity);
+        }
+
     }
 
 

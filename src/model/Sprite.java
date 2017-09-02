@@ -1,5 +1,5 @@
 package model;
-import java.awt.Graphics;
+import java.awt.*;
 
 /*
  * Represents a sprite
@@ -51,10 +51,19 @@ public abstract class Sprite {
     // modifies: this
     // effects: sprite is constrained to remain within horizontal boundaries of game
     protected void handleBoundary_x() {
-        if (x < 0)
-            x = 0;
-        else if (x > Game.WIDTH)
-            x = Game.WIDTH;
+//        if (x < 0)
+//            x = 0;
+//        else if (x > Game.WIDTH)
+//            x = Game.WIDTH;
+    }
+
+    // Has invader collided with another sprite?
+    // Effects: returns true if this Invader has collided with other Sprite; false otherwise
+    public boolean collidedWith(Sprite other) {
+        Rectangle thisBoundingRect = new Rectangle(getX() - getWidth() / 2, getY() - getHeight() / 2, getWidth(), getHeight());
+        Rectangle otherBoundingRect = new Rectangle(other.getX() - other.getWidth() / 2, other.getY() - other.getHeight() / 2,
+                other.getWidth(), other.getHeight());
+        return thisBoundingRect.intersects(otherBoundingRect);
     }
 
 }

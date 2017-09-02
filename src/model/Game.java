@@ -43,7 +43,7 @@ public class Game {
     // Initializes bricks
     // effects:  sets up list of sprites bricks
     private void initializeBricks() {
-        for (int i = 0; i < 3; i++){
+        for (int i = 0; i < 5; i++){
             Brick aBrick = new Brick(20 * i + i * 50,100,COLOR);
             sprites.add(aBrick);
         }
@@ -90,8 +90,10 @@ public class Game {
     }
 
     public void update(){
-        ball.move();
-        return;
+       moveBall();
+       checkCollisions();
+
+
     }
 
     // Is game over?
@@ -104,6 +106,35 @@ public class Game {
         return numBricksLeft;
     }
 
+    // Checks for collisions between an brick and a ball
+    // modifies: this
+    // effects:  removes any brick that has been hit with a ball
+    //           and removes corresponding brick from play
+    private void checkCollisions() {
+        List<Sprite> toBeRemoved = new ArrayList<Sprite>();
+        for (Sprite next : sprites) {
+            if (next instanceof Brick) {
+                checkBrickHit((Brick) next, toBeRemoved);
+            }
+        }
+        sprites.removeAll(toBeRemoved);
+        //ball.changeVelocity(-ball.getX_velocity(), -ball.getY_velocity());
+    }
 
+    // Has a given brick been hit by a ball?
+    // modifies: this, bricksToRemove
+    // effects: if target has been hit by a ball, removes target and ball from play;
+    // increments number of invaders destroyed.
+    private void checkBrickHit(Brick target, List<Sprite> bricksToRemove) {
+        for (Sprite next : sprites) {
+            if (next instanceof Ball) {
+                if (target.collidedWith(next)) {
+                    bricksToRemove.add(target);
+                   // bricksToRemove.add(next);
+                    //numBricksLeft--;
+                }
+            }
+        }
+    }
 
 }
