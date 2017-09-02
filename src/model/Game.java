@@ -79,6 +79,9 @@ public class Game {
         ball.move();
     }
 
+
+
+
     // Sets / resets the game
     // modifies: this
     // effects:  resets number of missiles in play and number of invaders destroyed;
@@ -89,7 +92,7 @@ public class Game {
 
     }
 
-    public void update(){
+    public void update() {
        moveBall();
        checkCollisions();
 
@@ -118,7 +121,7 @@ public class Game {
             }
         }
         sprites.removeAll(toBeRemoved);
-        //ball.changeVelocity(-ball.getX_velocity(), -ball.getY_velocity());
+
     }
 
     // Has a given brick been hit by a ball?
@@ -130,6 +133,7 @@ public class Game {
             if (next instanceof Ball) {
                 if (target.collidedWith(next)) {
                     bricksToRemove.add(target);
+                    ball.changeVelocity(ball.getX_velocity(), -ball.getY_velocity());
                    // bricksToRemove.add(next);
                     //numBricksLeft--;
                 }
