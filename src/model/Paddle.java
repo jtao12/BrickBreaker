@@ -15,7 +15,7 @@ public class Paddle extends Sprite {
     protected static final int HEIGHT = 10;
     protected static final int X_OFFSET =  Game.WIDTH / 2 - WIDTH / 2 ;
     protected static final int Y_OFFSET = Game.HEIGHT - 20;
-    protected static final int PADDLE_SPEED = 2;
+    protected static final int PADDLE_SPEED = 10;
     protected static final Color COLOR = new Color(250, 250, 250);
 
     public Paddle(){
@@ -34,11 +34,12 @@ public class Paddle extends Sprite {
 
     }
 
-    public void moveLeft(){
-        x = x - PADDLE_SPEED;
-
-     //   handleBoundary_x();
+    public void moveLeft() {
+        for (int i = 0; i < PADDLE_SPEED; i++) {
+            x--;
+        }
     }
+
 
     public void moveRight(){
         x = x + PADDLE_SPEED;
@@ -47,7 +48,7 @@ public class Paddle extends Sprite {
 
     public void draw(Graphics g){
         g.setColor(COLOR);
-        g.fillRect(X_OFFSET, Y_OFFSET, WIDTH, HEIGHT);
+        g.fillRect(x, y, WIDTH, HEIGHT);
         return;
     }
 

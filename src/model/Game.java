@@ -95,7 +95,6 @@ public class Game {
         }
     }
 }
-    // TODO: Refractor this to controller class
     // Responds to key press codes
     // modifies: this
     // effects:  moves paddle, launches ball at the beginning
@@ -126,12 +125,12 @@ public class Game {
         ball.move();
     }
 
-    private void movePaddle() {
+  /*  private void movePaddle() {
         paddle.moveLeft();
     }
 
 
-
+*/
 
     // Sets / resets the game
     // modifies: this
@@ -145,7 +144,7 @@ public class Game {
 
     public void update() {
        moveBall();
-       movePaddle();
+       //movePaddle();
        checkCollisions();
 
 
