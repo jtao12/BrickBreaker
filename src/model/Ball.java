@@ -27,7 +27,7 @@ public class Ball extends Sprite {
     }
 
     public void launchBall(){
-        changeVelocity(RND.nextInt(3 - -3) -3,-1); // launch ball and set initial speed to 10 pixels/sec
+        changeVelocity(RND.nextInt(3 - -3) -3,-1 ); // launch ball and set initial speed to 10 pixels/sec
         is_launched = true;
     }
 

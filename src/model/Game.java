@@ -111,6 +111,11 @@ public class Game {
             System.exit(0);
     }
 
+
+    public void keyReleased(int keyCode){
+        paddle.resetSpeed();
+    }
+
     public void draw(Graphics g){
         for(Sprite next: sprites){
             next.draw(g);
@@ -125,12 +130,10 @@ public class Game {
         ball.move();
     }
 
-  /*  private void movePaddle() {
-        paddle.moveLeft();
-    }
+
+    private void movePaddle(){paddle.move();}
 
 
-*/
 
     // Sets / resets the game
     // modifies: this
@@ -144,7 +147,7 @@ public class Game {
 
     public void update() {
        moveBall();
-       //movePaddle();
+        movePaddle();
        checkCollisions();
 
 
@@ -167,13 +170,23 @@ public class Game {
     private void checkCollisions() {
         List<Sprite> toBeRemoved = new ArrayList<Sprite>();
         for (Sprite next : sprites) {
+            if (paddle.collidedWith(ball)){
+                ball.changeVelocity(ball.getX_velocity(), -ball.getY_velocity());
+
+            }
             if (next instanceof Brick) {
                 checkBrickHit((Brick) next, toBeRemoved);
             }
+
         }
         sprites.removeAll(toBeRemoved);
 
     }
+
+
+
+
+
 
     // Has a given brick been hit by a ball?
     // modifies: this, bricksToRemove

@@ -17,7 +17,7 @@ import java.awt.event.*;
 // Let this be our controller
 public class BrickBreaker extends JFrame {
 
-    private static final int INTERVAL = 1;
+    private static final int INTERVAL = 10;
     private Game game;
     private Game_View game_view;
     private Timer t;
@@ -71,6 +71,11 @@ public class BrickBreaker extends JFrame {
         @Override
         public void keyPressed(KeyEvent e) {
             game.keyPressed(e.getKeyCode());
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e){
+            game.keyReleased(e.getKeyCode());
         }
     }
 
