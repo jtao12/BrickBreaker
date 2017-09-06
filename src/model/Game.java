@@ -168,6 +168,7 @@ public class Game {
     // effects:  removes any brick that has been hit with a ball
     //           and removes corresponding brick from play
     private void checkCollisions() {
+        ball.handleBoundary();
         List<Sprite> toBeRemoved = new ArrayList<Sprite>();
         for (Sprite next : sprites) {
             if (ball.collidedWith(paddle)){

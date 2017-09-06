@@ -31,6 +31,9 @@ public void move() throws invalidMove{
         throw new invalidMove("Brick's Can't Move");
         }
 
-
+public Rectangle getBounds(){
+        Rectangle bounds = new Rectangle(x,y,width,height);
+        return bounds;
+}
 
 }

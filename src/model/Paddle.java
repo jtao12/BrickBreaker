@@ -1,5 +1,6 @@
 package model;
 
+import javax.sound.sampled.Line;
 import java.awt.*;
 
 /**
@@ -54,6 +55,12 @@ public class Paddle extends Sprite {
         g.fillRect(x, y, WIDTH, HEIGHT);
         return;
     }
+
+    public Rectangle getBounds(){
+        Rectangle bounds = new Rectangle(x,y,width,1);
+        return bounds;
+    }
+
 
 
 }

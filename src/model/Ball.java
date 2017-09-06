@@ -5,7 +5,6 @@ import java.util.Random;
 public class Ball extends Sprite {
     private int x_velocity;
     private int y_velocity;
-    private boolean is_collided;
     private boolean is_launched;
     private final static int DIAMETER = 10;
     private final static int X_OFFSET = (Game.WIDTH / 2) - DIAMETER / 2 ;
@@ -19,7 +18,6 @@ public class Ball extends Sprite {
         super(X_OFFSET, Y_OFFSET, DIAMETER, DIAMETER);
         this.x_velocity = 0;
         this.y_velocity = 0;
-        this.is_collided = false;
         this.is_launched = false;
     }
     public void changeVelocity(int x, int y){
@@ -36,9 +34,6 @@ public class Ball extends Sprite {
         return is_launched;
     }
 
-    public boolean getCollisionStatus(){
-        return is_collided;
-    }
 
     public int getX_velocity(){
         return x_velocity;
@@ -50,7 +45,6 @@ public class Ball extends Sprite {
 
     @Override
     public void move(){      // TODO: changes x and y and then we need to redraw the ball...I think
-        handleBoundary();
 //        double rnd_temp = RND.nextDouble() * 3;
 //        x += x_velocity * rnd_temp;
         x += x_velocity;

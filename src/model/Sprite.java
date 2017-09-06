@@ -56,11 +56,6 @@ public abstract class Sprite {
     }
 
 
-    public Rectangle getBounds(){
-        Rectangle bounds = new Rectangle(x,y,this.width, this.height);
-        return bounds;
-    }
-
-
+    public abstract Rectangle getBounds();
 }
 
