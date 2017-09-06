@@ -12,6 +12,7 @@ public class Ball extends Sprite {
     private final static int Y_OFFSET = Paddle.Y_OFFSET - Paddle.HEIGHT - (DIAMETER / 2) ;
     private static final Color COLOR = new Color(65, 150, 188);
     public static final Random RND = new Random();
+    private final static int BALL_SPEED = 7;
 
 
     public Ball(){
@@ -27,7 +28,7 @@ public class Ball extends Sprite {
     }
 
     public void launchBall(){
-        changeVelocity(RND.nextInt(3 - -3) -3,-1 ); // launch ball and set initial speed to 10 pixels/sec
+        changeVelocity(RND.nextInt(3 - -3) -3,-BALL_SPEED ); // launch ball and set initial speed to 10 pixels/sec
         is_launched = true;
     }
 
@@ -78,7 +79,7 @@ public class Ball extends Sprite {
     }
 
     @Override
-    public Rectangle getbounds(){
+    public Rectangle getBounds(){
         Rectangle bounds = new Rectangle(x,y,DIAMETER, DIAMETER);
         return bounds;
     }

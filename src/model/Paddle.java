@@ -16,6 +16,7 @@ public class Paddle extends Sprite {
     protected static final int X_OFFSET =  Game.WIDTH / 2 - WIDTH / 2 ;
     protected static final int Y_OFFSET = Game.HEIGHT - 20;
     protected int PADDLE_SPEED = 0;
+    protected int PADDLE_VELOCITY = 7;
     protected static final Color COLOR = new Color(250, 250, 250);
 
     public Paddle(){
@@ -35,7 +36,7 @@ public class Paddle extends Sprite {
     }
 
     public void moveLeft() {
-        PADDLE_SPEED = -2;
+        PADDLE_SPEED = -PADDLE_VELOCITY;
     }
 
     public void resetSpeed(){
@@ -44,7 +45,7 @@ public class Paddle extends Sprite {
 
 
     public void moveRight(){
-        PADDLE_SPEED = 2;
+        PADDLE_SPEED = PADDLE_VELOCITY;
       //  handleBoundary_x();
     }
 

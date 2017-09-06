@@ -47,26 +47,16 @@ public abstract class Sprite {
     // effects: draws the sprite on the Graphics object g
     public abstract void draw(Graphics g);
 
-    // Constrains sprite so that it doesn't travel off sides of screen
-    // modifies: this
-    // effects: sprite is constrained to remain within horizontal boundaries of game
-    protected void handleBoundary_x() {
-//        if (x < 0)
-//            x = 0;
-//        else if (x > Game.WIDTH)
-//            x = Game.WIDTH;
-    }
-
     // Has invader collided with another sprite?
     // Effects: returns true if this Invader has collided with other Sprite; false otherwise
     public boolean collidedWith(Sprite other) {
-        Rectangle thisBoundingRect = this.getbounds(); // should always be the ball
-        Rectangle otherBoundingRect = other.getbounds();
+        Rectangle thisBoundingRect = this.getBounds(); // should always be the ball
+        Rectangle otherBoundingRect = other.getBounds();
         return thisBoundingRect.intersects(otherBoundingRect);
     }
 
 
-    public Rectangle getbounds(){
+    public Rectangle getBounds(){
         Rectangle bounds = new Rectangle(x,y,this.width, this.height);
         return bounds;
     }
