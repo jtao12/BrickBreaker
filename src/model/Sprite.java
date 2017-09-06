@@ -60,11 +60,17 @@ public abstract class Sprite {
     // Has invader collided with another sprite?
     // Effects: returns true if this Invader has collided with other Sprite; false otherwise
     public boolean collidedWith(Sprite other) {
-        Rectangle thisBoundingRect = new Rectangle(getX() - getWidth() / 2, getY() - getHeight() / 2, getWidth(), getHeight());
-        Rectangle otherBoundingRect = new Rectangle(other.getX() - other.getWidth() / 2, other.getY() - other.getHeight() / 2,
-                other.getWidth(), other.getHeight());
+        Rectangle thisBoundingRect = this.getbounds(); // should always be the ball
+        Rectangle otherBoundingRect = other.getbounds();
         return thisBoundingRect.intersects(otherBoundingRect);
     }
+
+
+    public Rectangle getbounds(){
+        Rectangle bounds = new Rectangle(x,y,this.width, this.height);
+        return bounds;
+    }
+
 
 }
 

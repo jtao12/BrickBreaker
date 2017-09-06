@@ -77,5 +77,11 @@ public class Ball extends Sprite {
         g.drawOval(x, y, DIAMETER, DIAMETER);
     }
 
+    @Override
+    public Rectangle getbounds(){
+        Rectangle bounds = new Rectangle(x,y,DIAMETER, DIAMETER);
+        return bounds;
+    }
+
 
 }

@@ -170,9 +170,8 @@ public class Game {
     private void checkCollisions() {
         List<Sprite> toBeRemoved = new ArrayList<Sprite>();
         for (Sprite next : sprites) {
-            if (paddle.collidedWith(ball)){
+            if (ball.collidedWith(paddle)){
                 ball.changeVelocity(ball.getX_velocity(), -ball.getY_velocity());
-
             }
             if (next instanceof Brick) {
                 checkBrickHit((Brick) next, toBeRemoved);
@@ -195,7 +194,7 @@ public class Game {
     private void checkBrickHit(Brick target, List<Sprite> bricksToRemove) {
         for (Sprite next : sprites) {
             if (next instanceof Ball) {
-                if (target.collidedWith(next)) {
+                if (ball.collidedWith(target)) {
                     bricksToRemove.add(target);
                     ball.changeVelocity(ball.getX_velocity(), -ball.getY_velocity());
                    // bricksToRemove.add(next);
