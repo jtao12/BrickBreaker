@@ -169,7 +169,7 @@ public class Game {
         List<Sprite> toBeRemoved = new ArrayList<Sprite>();
         if (ball.collidedWith(paddle)){
 
-            ball.changeVelocity((RND.nextDouble()-0.5)*5+ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+            ball.changeVelocity((RND.nextInt(10)-5)+ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
         }
         for (Sprite next : sprites) {
             if (next instanceof Brick) {
