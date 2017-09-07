@@ -3,8 +3,8 @@ import java.awt.*;
 import java.util.Random;
 
 public class Ball extends Sprite {
-    private int x_velocity;
-    private int y_velocity;
+    private double x_velocity;
+    private double y_velocity;
     private boolean is_launched;
     private final static int DIAMETER = 10;
     private final static int X_OFFSET = (Game.WIDTH / 2) - DIAMETER / 2 ;
@@ -16,17 +16,17 @@ public class Ball extends Sprite {
 
     public Ball(){
         super(X_OFFSET, Y_OFFSET, DIAMETER, DIAMETER);
-        this.x_velocity = 0;
-        this.y_velocity = 0;
+        this.x_velocity = 0.0;
+        this.y_velocity = 0.0;
         this.is_launched = false;
     }
-    public void changeVelocity(int x, int y){
+    public void changeVelocity(double x, double y){
         this.x_velocity = x;
         this.y_velocity = y;
     }
 
     public void launchBall(){
-        changeVelocity(RND.nextInt(3 - -3) -3,-BALL_SPEED ); // launch ball and set initial speed to 10 pixels/sec
+        changeVelocity(RND.nextDouble()*BALL_SPEED,-BALL_SPEED ); // launch ball and set initial speed to 10 pixels/sec
         is_launched = true;
     }
 
@@ -35,11 +35,11 @@ public class Ball extends Sprite {
     }
 
 
-    public int getX_velocity(){
+    public double getX_velocity(){
         return x_velocity;
     }
 
-    public int getY_velocity(){
+    public double getY_velocity(){
         return y_velocity;
     }
 
