@@ -168,6 +168,7 @@ public class Game {
         ball.handleBoundary();
         List<Sprite> toBeRemoved = new ArrayList<Sprite>();
         if (ball.collidedWith(paddle)){
+
             ball.changeVelocity(ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
         }
         for (Sprite next : sprites) {
