@@ -47,7 +47,6 @@ public class Paddle extends Sprite {
 
     public void moveRight(){
         PADDLE_SPEED = PADDLE_VELOCITY;
-      //  handleBoundary_x();
     }
 
     public void draw(Graphics g){

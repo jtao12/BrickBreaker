@@ -151,11 +151,15 @@ public class Game {
        checkCollisions();
 
 
+
     }
 
     // Is game over?
     // Effects: returns true if game is over, false otherwise
     public boolean isOver() {
+        if (ball.getX() < 0){
+            isGameOver = true;
+        }
         return isGameOver;
     }
 

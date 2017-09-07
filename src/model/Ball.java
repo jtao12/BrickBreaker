@@ -11,7 +11,7 @@ public class Ball extends Sprite {
     private final static int Y_OFFSET = Paddle.Y_OFFSET - Paddle.HEIGHT - (DIAMETER / 2) ;
     private static final Color COLOR = new Color(65, 150, 188);
     public static final Random RND = new Random();
-    private final static int BALL_SPEED = 7;
+    private final static int BALL_SPEED = 5;
 
 
     public Ball(){
