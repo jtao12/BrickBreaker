@@ -168,8 +168,7 @@ public class Game {
         ball.handleBoundary();
         List<Sprite> toBeRemoved = new ArrayList<Sprite>();
         if (ball.collidedWith(paddle)){
-
-            ball.changeVelocity((RND.nextInt(10)-5)+ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+            boundary_paddlecollision();
         }
         for (Sprite next : sprites) {
             if (next instanceof Brick) {
@@ -178,6 +177,24 @@ public class Game {
 
         }
         sprites.removeAll(toBeRemoved);
+    }
+
+    // Randomly changes the speed of the ball depending where it collides
+    // with the paddle
+
+    private void boundary_paddlecollision(){
+        int ball_x = ball.getX();
+        int paddle_3rds = paddle.getWidth() / 3;
+        if (ball_x <= paddle_3rds + paddle.getX()){
+            ball.changeVelocity((RND.nextInt(5) - 4)+ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+        }
+        else if (ball_x <= paddle_3rds * 2 + paddle.getX()){
+            ball.changeVelocity((RND.nextInt(2)-1)+ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+        }
+        else {
+            ball.changeVelocity((RND.nextInt(4) + 1) + ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+
+        }
     }
 
 
@@ -195,8 +212,7 @@ public class Game {
                 if (ball.collidedWith(target)) {
                     bricksToRemove.add(target);
                     ball.changeVelocity(ball.getX_velocity(), -ball.getY_velocity());
-                   // bricksToRemove.add(next);
-                    //numBricksLeft--;
+                    numBricksLeft--;
                 }
             }
         }
