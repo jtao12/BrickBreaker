@@ -186,13 +186,13 @@ public class Game {
         int ball_x = ball.getX();
         int paddle_3rds = paddle.getWidth() / 3;
         if (ball_x <= paddle_3rds + paddle.getX()){
-            ball.changeVelocity((RND.nextInt(5) - 4)+ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+            ball.changeVelocity((RND.nextInt(4) - 5), -Math.abs(ball.getY_velocity()));
         }
         else if (ball_x <= paddle_3rds * 2 + paddle.getX()){
-            ball.changeVelocity((RND.nextInt(2)-1)+ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+            ball.changeVelocity((RND.nextInt(2)-1), -Math.abs(ball.getY_velocity()));
         }
         else {
-            ball.changeVelocity((RND.nextInt(4) + 1) + ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+            ball.changeVelocity((RND.nextInt(4) + 1) , -Math.abs(ball.getY_velocity()));
 
         }
     }
