@@ -65,6 +65,14 @@ public class Ball extends Sprite {
     }
 
     public void handleBoundary() {
+        if (getLaunchStatus() == false){
+            if (x <= Paddle.WIDTH /2 - DIAMETER / 2){
+                x = Paddle.WIDTH /2 - DIAMETER / 2;
+            }
+            else if (x >= Game.WIDTH -  Paddle.WIDTH /2 - DIAMETER / 2) {
+                x = Game.WIDTH - Paddle.WIDTH / 2 - DIAMETER / 2;
+            }
+        }
         if (y <= 0 || y >= 600) {
             if (x_velocity == 0)
                 changeVelocity(x_velocity + 1, -y_velocity);
