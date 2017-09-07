@@ -34,7 +34,7 @@ public class Game {
     private ArrayList<Brick> bricks;
     private boolean isGameOver;
     private int numBricksLeft;   //
-    private static final Color COLOR = new Color(128, 50, 20);
+    private Color[] colors = new Color[5];
 
     public Game(){
         sprites = new ArrayList<Sprite>();
@@ -65,6 +65,11 @@ public class Game {
 //    }
 
     private void initializeBricks() {
+        colors[0] = new Color(0xFF9E25);
+        colors[1] = new Color(0xFF9E25);
+        colors[2] = new Color(0x548AFF);
+        colors[3] = new Color(0xFF686A);
+        colors[4] = new Color(0xFF686A);
         for( int row = 0; row < 5; row++ ) {
             for (int column = 0; column < 6; column++) {
 
@@ -87,7 +92,7 @@ public class Game {
 
             int	y = HEIGHT/4 + row*BRICK_HEIGHT + row*BRICK_SEP;
 
-            Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, COLOR);
+            Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, colors[row]);
             sprites.add(aBrick);
         }
     }
