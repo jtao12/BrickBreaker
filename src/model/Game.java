@@ -101,10 +101,16 @@ public class Game {
     // modifies: this
     // effects:  moves paddle, launches ball at the beginning
     public void keyPressed(int keyCode) {
-        if (keyCode == KeyEvent.VK_KP_LEFT || keyCode == KeyEvent.VK_LEFT)
+        if (keyCode == KeyEvent.VK_KP_LEFT || keyCode == KeyEvent.VK_LEFT) {
             paddle.moveLeft();
-        else if (keyCode == KeyEvent.VK_KP_RIGHT || keyCode == KeyEvent.VK_RIGHT)
+            if (ball.getLaunchStatus() == false)
+                ball.moveLeft();
+        }
+        else if (keyCode == KeyEvent.VK_KP_RIGHT || keyCode == KeyEvent.VK_RIGHT) {
             paddle.moveRight();
+            if (ball.getLaunchStatus() == false)
+                ball.moveRight();
+        }
         else if (keyCode == KeyEvent.VK_SPACE && !ball.getLaunchStatus())
             ball.launchBall();
         else if (keyCode == KeyEvent.VK_R && isGameOver)
@@ -115,6 +121,8 @@ public class Game {
 
     public void keyReleased(){
         paddle.resetSpeed();
+        if (ball.getLaunchStatus() == false)
+            ball.resetSpeed();
     }
 
     public void draw(Graphics g){

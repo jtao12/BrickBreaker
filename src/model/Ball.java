@@ -52,9 +52,25 @@ public class Ball extends Sprite {
 
     }
 
+    public void moveLeft() {
+        x_velocity = -Paddle.PADDLE_VELOCITY;
+    }
+
+    public void resetSpeed(){
+        x_velocity = 0;
+    }
+
+    public void moveRight(){
+        x_velocity = Paddle.PADDLE_VELOCITY;
+    }
+
     public void handleBoundary() {
         if (y <= 0 || y >= 600) {
-            changeVelocity(x_velocity, -y_velocity);
+            if (x_velocity == 0)
+                changeVelocity(x_velocity + 1, -y_velocity);
+            else
+                changeVelocity(x_velocity, -y_velocity);
+
         }
 
         if (x <= 0 || x >= 800) {
