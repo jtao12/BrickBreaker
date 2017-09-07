@@ -48,7 +48,7 @@ public class Game {
     // effects:  sets up list of sprites bricks, paddle, and ball
     private void initializeSprites() {
         sprites.clear();
-        initializeBricks(); // TODO
+        initializeBricks();
         paddle = new Paddle();
         ball = new Ball();
         sprites.add(paddle);
@@ -66,7 +66,6 @@ public class Game {
 
     private void initializeBricks() {
         for( int row = 0; row < 5; row++ ) {
-
             for (int column = 0; column < 6; column++) {
 
 				/* To get the x coordinate for the starting width:
@@ -86,12 +85,10 @@ public class Game {
 				 * 	then add a brick height and a brick separation for each of the following rows
 				 */
 
-            int	y = HEIGHT/2 + row*BRICK_HEIGHT + row*BRICK_SEP;
+            int	y = HEIGHT/4 + row*BRICK_HEIGHT + row*BRICK_SEP;
 
             Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, COLOR);
             sprites.add(aBrick);
-
-
         }
     }
 }
@@ -111,8 +108,7 @@ public class Game {
             System.exit(0);
     }
 
-
-    public void keyReleased(int keyCode){
+    public void keyReleased(){
         paddle.resetSpeed();
     }
 
@@ -130,9 +126,9 @@ public class Game {
         ball.move();
     }
 
-
-    private void movePaddle(){paddle.move();}
-
+    private void movePaddle(){
+        paddle.move();
+    }
 
 
     // Sets / resets the game
@@ -142,16 +138,12 @@ public class Game {
     private void reset() {
         isGameOver = false;
         numBricksLeft = 15;
-
     }
 
     public void update() {
-       moveBall();
+        moveBall();
         movePaddle();
-       checkCollisions();
-
-
-
+        checkCollisions();
     }
 
     // Is game over?
@@ -163,6 +155,7 @@ public class Game {
         return isGameOver;
     }
 
+    // Checks how many bricks are left
     public int getNumBricksLeft() {
         return numBricksLeft;
     }
@@ -174,17 +167,16 @@ public class Game {
     private void checkCollisions() {
         ball.handleBoundary();
         List<Sprite> toBeRemoved = new ArrayList<Sprite>();
+        if (ball.collidedWith(paddle)){
+            ball.changeVelocity(ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
+        }
         for (Sprite next : sprites) {
-            if (ball.collidedWith(paddle)){
-                ball.changeVelocity(ball.getX_velocity(), -Math.abs(ball.getY_velocity()));
-            }
             if (next instanceof Brick) {
                 checkBrickHit((Brick) next, toBeRemoved);
             }
 
         }
         sprites.removeAll(toBeRemoved);
-
     }
 
 

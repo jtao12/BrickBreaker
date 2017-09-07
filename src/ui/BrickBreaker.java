@@ -75,7 +75,7 @@ public class BrickBreaker extends JFrame {
 
         @Override
         public void keyReleased(KeyEvent e){
-            game.keyReleased(e.getKeyCode());
+            game.keyReleased();
         }
     }
 
