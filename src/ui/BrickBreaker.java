@@ -20,6 +20,7 @@ public class BrickBreaker extends JFrame {
     private static final int INTERVAL = 10;
     private Game game;
     private Game_View game_view;
+    private Score_Panel score_panel;
     private Timer t;
 
     // Constructs main window
@@ -30,7 +31,9 @@ public class BrickBreaker extends JFrame {
         setUndecorated(true);
         game = new Game();
         game_view = new Game_View(game);
+        score_panel = new Score_Panel(game);
         add(game_view);
+        add(score_panel, BorderLayout.NORTH);
         addKeyListener(new KeyHandler());
         pack();
         centreOnScreen();
@@ -49,6 +52,7 @@ public class BrickBreaker extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 game.update();
                 game_view.repaint();
+                score_panel.update();
 
             }
         }

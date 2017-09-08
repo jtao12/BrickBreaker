@@ -14,15 +14,15 @@ public class Game {
     public static final int HEIGHT = 600;
     public static final Random RND = new Random(); // TODO: What is this for?????
 
-    /** Number of bricks per row */
-    private static final int NBRICKS_PER_ROW = 5;
+    /** Number of columns of bricks */
+    private static final int NBRICKS_COLS = 5;
     /** Number of rows of bricks */
     private static final int NBRICK_ROWS = 5;
     /** Separation between bricks */
     private static final int BRICK_SEP = 5;
     /** Width of a brick */
     private static final int BRICK_WIDTH =
-            (WIDTH - (NBRICKS_PER_ROW - 1) * BRICK_SEP) / NBRICKS_PER_ROW;
+            (WIDTH - (NBRICKS_COLS - 1) * BRICK_SEP) / NBRICKS_COLS;
     /** Height of a brick */
     private static final int BRICK_HEIGHT = 30;
     /** Offset of the top brick row from the top */
@@ -70,8 +70,8 @@ public class Game {
         colors[2] = new Color(0x548AFF);
         colors[3] = new Color(0xFF686A);
         colors[4] = new Color(0xFF686A);
-        for( int row = 0; row < 5; row++ ) {
-            for (int column = 0; column < 6; column++) {
+        for( int row = 0; row < NBRICK_ROWS; row++ ) {
+            for (int column = 0; column < NBRICKS_COLS; column++) {
 
 				/* To get the x coordinate for the starting width:
 				 * 	start at the center width,
@@ -83,7 +83,7 @@ public class Game {
 				 * 	add a separation width
 				 */
 
-            int	x = WIDTH/2 - (NBRICKS_PER_ROW*BRICK_WIDTH)/2 - ((NBRICKS_PER_ROW-1)*BRICK_SEP)/2 + column*BRICK_WIDTH + column*BRICK_SEP;
+            int	x = WIDTH/2 - (NBRICKS_COLS *BRICK_WIDTH)/2 - ((NBRICKS_COLS -1)*BRICK_SEP)/2 + column*BRICK_WIDTH + column*BRICK_SEP;
 
 				/* To get the y coordinate of the starting height:
 				 * 	start at the given length from the top for the first row,
