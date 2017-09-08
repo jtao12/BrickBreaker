@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class Game_View extends JPanel {
     private static final String you_lose = "Loser";
-    private static final String restart = "There is no restart on this game";
+    private static final String restart = "R to replay";
     private Game game;
 
     // Make a Game_view
@@ -25,12 +25,23 @@ public class Game_View extends JPanel {
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         drawGame(g);
+        if (game.isOver()){
+            gameOver(g);
+        }
     }
 
 
     private void drawGame(Graphics g){
         game.draw(g);
         return;
+    }
+
+    private void gameOver(Graphics g){
+        g.setColor(new Color(255, 255, 255));
+        g.setFont(new Font("Times New Roman", 20, 20));
+        FontMetrics fm = g.getFontMetrics();
+        g.drawString(you_lose, Game.WIDTH /2 - fm.stringWidth(you_lose), Game.HEIGHT / 2);
+        g.drawString(restart, Game.WIDTH /2 - fm.stringWidth(restart), Game.HEIGHT / 2 + 50);
     }
 
 
