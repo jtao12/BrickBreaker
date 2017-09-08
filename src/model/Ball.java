@@ -103,7 +103,12 @@ public class Ball extends Sprite {
 
         // When ball hits either side of the screen, reverse direction of ball
         if (x <= 0 || x >= Game.WIDTH - BALL_DIAMETER) {
-            changeVelocity(-x_velocity, y_velocity);
+            if (x <= 0 && x_velocity == 0)
+                changeVelocity(-x_velocity + 1, y_velocity);
+            else if (x >= Game.WIDTH - BALL_DIAMETER && x_velocity == 0)
+                changeVelocity(-x_velocity - 1, y_velocity);
+            else
+                changeVelocity(-x_velocity, y_velocity);
         }
     }
 
