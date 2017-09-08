@@ -75,25 +75,26 @@ public class Game {
         for( int row = 0; row < NBRICK_ROWS; row++) {
             for (int column = 0; column < NBRICK_COLS; column++) {
 
-				/* To get the x coordinate for the starting width:
-				 * 	start at the center width,
-				 * 	subtract half of the bricks (width) in the row,
-				 * 	subtract half of the separations (width) between the bricks in the row,
-				 *  now you're at where the first brick should be,
-				 *  so for the starting point of the next bricks in the column, you need to:
-				 * 	add a brick width
-				 * 	add a separation width
-				 */
+			    // To get the x coordinate for the starting width:
+				// 	start at half the center width,
+				// 	subtract half of the bricks (width) in the row,
+				// 	subtract half of the separations (width) between the bricks in the row,
+				//  now you're at where the first brick should be,
+				//  so for the starting point of the next bricks in the column, you need to:
+				// 	add a brick width
+				// 	add a separation width
 
-                int	x = WIDTH/2 - (NBRICK_COLS *BRICK_WIDTH)/2 - ((NBRICK_COLS -1)*BRICK_SEP)/2 + column*BRICK_WIDTH + column*BRICK_SEP;
+                int	x = WIDTH/2 - (NBRICK_COLS * BRICK_WIDTH) / 2 - ((NBRICK_COLS - 1) * BRICK_SEP) / 2
+                        + column * BRICK_WIDTH + column * BRICK_SEP;
 
-				/* To get the y coordinate of the starting height:
-				 * 	start at the given length from the top for the first row,
-				 * 	then add a brick height and a brick separation for each of the following rows
-				 */
+				// To get the y coordinate of the starting height:
+				// 	start at the given length from the top for the first row,
+				// 	then add a brick height and a brick separation for each of the following rows
 
-                int	y = HEIGHT/4 + row*BRICK_HEIGHT + row*BRICK_SEP;
+                int	y = HEIGHT / 4 + row * BRICK_HEIGHT + row * BRICK_SEP;
 
+                // Adds brick with the color corresponding to its row, and a score
+                // higher bricks are worth more points
                 Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, colors[row], SCORE_MULTIPLIER * Math.abs(NBRICK_ROWS - row));
                 sprites.add(aBrick);
             }
