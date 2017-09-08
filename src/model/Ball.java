@@ -8,12 +8,12 @@ public class Ball extends Sprite {
     private double x_velocity;
     private double y_velocity;
     private boolean is_launched;
-    private final static int BALL_SPEED = 5;
     private final static int BALL_DIAMETER = 10;
     private final static int BALL_X_OFFSET = (Game.WIDTH / 2) - BALL_DIAMETER / 2 ;
     private final static int BALL_Y_OFFSET = Paddle.PADDLE_Y_OFFSET - Paddle.PADDLE_HEIGHT - (BALL_DIAMETER / 2) ;
     private final static Color BALL_COLOR = new Color(65, 150, 188);
     private final static Random RND = new Random();
+    public final static int BALL_SPEED = 5;
 
 
     public Ball(){
