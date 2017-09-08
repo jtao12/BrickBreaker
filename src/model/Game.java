@@ -17,7 +17,7 @@ public class Game {
     /** Number of columns of bricks */
     private static final int NBRICKS_COLS = 5;
     /** Number of rows of bricks */
-    private static final int NBRICK_ROWS = 5;
+    private static final int NBRICK_ROWS = 1;
     /** Separation between bricks */
     private static final int BRICK_SEP = 5;
     /** Width of a brick */
