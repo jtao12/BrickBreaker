@@ -11,8 +11,6 @@ import java.awt.*;
 
 public class Brick extends Sprite {
 
-//private static final int WIDTH=50;
-//private static final int HEIGHT=10;
 private Color colour_i_am;
 
 public Brick(int X_OFFSET,int Y_OFFSET, int WIDTH, int HEIGHT, Color color){

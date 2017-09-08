@@ -34,11 +34,13 @@ public class Game {
     private ArrayList<Brick> bricks;
     private boolean isGameOver;
     private int numBricksLeft = NBRICK_ROWS * NBRICKS_COLS;   //
+    private boolean isGamewon;
     private Color[] colors = new Color[5];
 
     public Game(){
         sprites = new ArrayList<Sprite>();
         initializeSprites();
+        isGamewon = false;
         reset();
     }
 
@@ -150,6 +152,7 @@ public class Game {
     private void reset() {
         initializeSprites();
         isGameOver = false;
+        isGamewon = false;
         numBricksLeft = NBRICK_ROWS * NBRICKS_COLS;
         }
 
@@ -231,12 +234,18 @@ public class Game {
     }
 
     public void isgameover(){
-  /*      if (numBricksLeft == 0)
-            return; // TODO: something ror winning
-            */
+        if (numBricksLeft == 0){
+            isGamewon = true;
+            ball.changeVelocity(0,0);
+        }
+
         if (ball.getY() >= HEIGHT){
             isGameOver = true;
         }
+    }
+
+    public boolean iswon(){
+        return isGamewon;
     }
 
 }

@@ -11,6 +11,7 @@ import java.awt.*;
 public class Game_View extends JPanel {
     private static final String you_lose = "Loser";
     private static final String restart = "R to replay";
+    private static final String Win = "You win";
     private Game game;
 
     // Make a Game_view
@@ -28,6 +29,10 @@ public class Game_View extends JPanel {
         if (game.isOver()){
             gameOver(g);
         }
+
+        if (game.iswon()){
+            you_win(g);
+        }
     }
 
 
@@ -43,6 +48,17 @@ public class Game_View extends JPanel {
         g.drawString(you_lose, Game.WIDTH /2 - fm.stringWidth(you_lose) / 2, Game.HEIGHT / 2);
         g.drawString(restart, Game.WIDTH /2 - fm.stringWidth(restart) / 2, Game.HEIGHT / 2 + 50);
     }
+
+
+    private void you_win(Graphics g){
+        g.setColor(new Color(255, 255, 255));
+        g.setFont(new Font("Calibri", Font.BOLD, 28));
+        FontMetrics fm = g.getFontMetrics();
+        g.drawString(restart, Game.WIDTH /2 - fm.stringWidth(restart) / 2, Game.HEIGHT / 2 + 50);
+        g.drawString(Win, Game.WIDTH /2 - fm.stringWidth(Win) / 2, Game.HEIGHT / 2);
+
+    }
+
 
 
 
