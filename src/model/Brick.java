@@ -6,10 +6,12 @@ import java.awt.*;
 public class Brick extends Sprite {
 
     private Color brickColor;
+    public int brickScore;
 
-    public Brick(int BRICK_X_OFFSET,int BRICK_Y_OFFSET, int BRICK_WIDTH, int BRICK_HEIGHT, Color COLOR){
+    public Brick(int BRICK_X_OFFSET,int BRICK_Y_OFFSET, int BRICK_WIDTH, int BRICK_HEIGHT, Color COLOR, int BRICK_SCORE){
         super(BRICK_X_OFFSET, BRICK_Y_OFFSET, BRICK_WIDTH, BRICK_HEIGHT);
         brickColor = COLOR;
+        brickScore = BRICK_SCORE;
     }
 
     // Draws and colors the brick

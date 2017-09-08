@@ -8,10 +8,9 @@ public class Paddle extends Sprite {
     protected static final int PADDLE_HEIGHT = 10;
     protected static final int PADDLE_X_OFFSET =  Game.WIDTH / 2 - PADDLE_WIDTH / 2 ;
     protected static final int PADDLE_Y_OFFSET = Game.HEIGHT - 50;
-    // Paddle color
     protected static final Color PADDLE_COLOR = new Color(250, 250, 250);
     // How fast the paddle moves
-    protected static final int PADDLE_SPEED = 7;
+    protected static final int PADDLE_SPEED = 10;
     protected int PADDLE_VELOCITY = 0;
 
     public Paddle(){

@@ -9,12 +9,13 @@ import java.util.Random;
 /*****************************************************************
  * BrickBreaker v.1.0                                            *
  * Authors: Justin Tao, Lauren Bentley                           *
- * Acknowledgements:                                             *
+ * Acknowledgements: SpaceInvader game from UBC CPSC210 lecture  *
  * Updates: Sep. 8, 2017                                         *
+ * TODOs: bug when sometimes paddle will not move right for a    *
+ *        milisecond when ball is in play                        *
  *****************************************************************/
 
 public class Game {
-
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
     public static final Random RND = new Random();
@@ -22,6 +23,8 @@ public class Game {
     private Paddle paddle;
     private Ball ball;
     private int numBricksLeft;
+    private int score;
+    private static final int SCORE_MULTIPLIER = 100;
     private boolean isGameOver;
     private boolean isGameWon;
 
@@ -54,6 +57,7 @@ public class Game {
         sprites.clear();
         initializeBricks();
         numBricksLeft = NBRICK_ROWS * NBRICK_COLS;
+        score = 0;
         paddle = new Paddle();
         ball = new Ball();
         sprites.add(paddle);
@@ -90,7 +94,7 @@ public class Game {
 
                 int	y = HEIGHT/4 + row*BRICK_HEIGHT + row*BRICK_SEP;
 
-                Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, colors[row]);
+                Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, colors[row], SCORE_MULTIPLIER * Math.abs(NBRICK_ROWS - row));
                 sprites.add(aBrick);
             }
         }
@@ -173,6 +177,11 @@ public class Game {
         return numBricksLeft;
     }
 
+    // Returns score so far
+    public int getScore() {
+        return score;
+    }
+
     // Is game over?
     // effects: returns true if game is over, false otherwise
     public boolean getIsGameOver() {
@@ -246,6 +255,7 @@ public class Game {
                     bricksToRemove.add(target);
                     ball.changeVelocity(ball.getX_velocity(), -ball.getY_velocity());
                     numBricksLeft--;
+                    score += target.brickScore;
                 }
             }
         }
