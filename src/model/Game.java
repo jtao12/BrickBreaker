@@ -233,12 +233,18 @@ public class Game {
     // with the paddle
     private void paddleCollision(){
         int ball_x = ball.getX();
-        int paddleThirds = paddle.getWidth() / 3;
-        if (ball_x <= paddleThirds + paddle.getX()){
+        int paddleFifths = paddle.getWidth() / 5;
+        if (ball_x <= paddleFifths + paddle.getX()){
             ball.changeVelocity((RND.nextInt(Ball.BALL_SPEED - 1) - Ball.BALL_SPEED), -Math.abs(ball.getY_velocity()));
         }
-        else if (ball_x <= paddleThirds * 2 + paddle.getX()){
+        else if (ball_x <= paddleFifths * 2 + paddle.getX()){
+            ball.changeVelocity((5.0 - Ball.BALL_SPEED), -Math.abs(ball.getY_velocity()));
+        }
+        else if (ball_x <= paddleFifths * 3 + paddle.getX()){
             ball.changeVelocity((RND.nextInt(2)-1), -Math.abs(ball.getY_velocity()));
+        }
+        else if (ball_x <= paddleFifths * 4 + paddle.getX()){
+            ball.changeVelocity(RND.nextInt(5) + 3, -Math.abs(ball.getY_velocity()));
         }
         else {
             ball.changeVelocity((RND.nextInt(Ball.BALL_SPEED - 1) + 1), -Math.abs(ball.getY_velocity()));
