@@ -148,9 +148,11 @@ public class Game {
     // effects:  resets number of missiles in play and number of invaders destroyed;
     //           game is not over
     private void reset() {
+        initializeSprites();
         isGameOver = false;
         numBricksLeft = 15;
-    }
+        }
+
 
     public void update() {
         moveBall();
@@ -234,9 +236,6 @@ public class Game {
             */
         if (ball.getY() >= HEIGHT){
             isGameOver = true;
-        }
-        if (isGameOver){
-            initializeSprites();
         }
     }
 
