@@ -13,8 +13,8 @@ import java.awt.*;
 public class Score_Panel extends JPanel {
     private static final String BRICKS_TEXT = "Bricks Remaining: ";
     private static final String SCORE_TEXT = "Score: ";
-    private static final int LBL_WIDTH = 700;
-    private static final int LBL_HEIGHT = 400;
+    private static final int LBL_WIDTH = 200;
+    private static final int LBL_HEIGHT = 40;
     private Game game;
     private JLabel bricksLbl;
     private JLabel scoreLbl;
