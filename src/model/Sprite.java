@@ -1,4 +1,5 @@
 package model;
+
 import java.awt.*;
 
 /** Represents a Sprite **/

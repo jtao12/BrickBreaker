@@ -14,7 +14,6 @@ public class Paddle extends Sprite {
     protected static final int PADDLE_SPEED = 7;
     protected int PADDLE_VELOCITY = 0;
 
-
     public Paddle(){
         super(PADDLE_X_OFFSET, PADDLE_Y_OFFSET, PADDLE_WIDTH, PADDLE_HEIGHT);
     }
@@ -67,7 +66,7 @@ public class Paddle extends Sprite {
     // Get bounding rectangle of the top side of the paddle
     // Since we only care if the ball hits the top of the paddle
     public Rectangle getBounds(){
-        Rectangle bounds = new Rectangle(x,y,width,1);
+        Rectangle bounds = new Rectangle(x, y, width,1);
         return bounds;
     }
 

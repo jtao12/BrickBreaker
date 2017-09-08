@@ -1,14 +1,12 @@
 package ui;
 
 import model.Game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-// Represents the main window in which the Brick Breaker
-// game is played
-//
-
+/** Represents the main window in which the BrickBreaker is played **/
 @SuppressWarnings("serial")
 
 // Let this be our controller
@@ -16,19 +14,19 @@ public class BrickBreaker extends JFrame {
 
     private static final int INTERVAL = 10;
     private Game game;
-    private Game_View game_view;
-    private Score_Panel score_panel;
+    private GameView game_view;
+    private ScorePanel score_panel;
     private Timer t;
 
     // Constructs main window
-    // effects: sets up window in which Space Invaders game will be played
+    // effects: sets up window in which BrickBreaker will be played
     public BrickBreaker() {
         super("Brick Breaker");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setUndecorated(true);
         game = new Game();
-        game_view = new Game_View(game);
-        score_panel = new Score_Panel(game);
+        game_view = new GameView(game);
+        score_panel = new ScorePanel(game);
         add(game_view);
         add(score_panel, BorderLayout.NORTH);
         addKeyListener(new KeyHandler());
@@ -50,24 +48,21 @@ public class BrickBreaker extends JFrame {
                 game.update();
                 game_view.repaint();
                 score_panel.update();
-
             }
         }
-
         );
     }
 
     // Centres frame on desktop
     // modifies: this
-    // effects:  location of frame is set so frame is centred on desktop
+    // effects: location of frame is set so frame is centred on desktop
     private void centreOnScreen() {
         Dimension scrn = Toolkit.getDefaultToolkit().getScreenSize();
         setLocation((scrn.width - getWidth()) / 2, (scrn.height - getHeight()) / 2);
     }
 
-    /*
-     * A key handler to respond to key events
-     */
+    // A key handler to respond to key events
+    // effects: handles keys pressed or released
     private class KeyHandler extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
@@ -80,7 +75,7 @@ public class BrickBreaker extends JFrame {
         }
     }
 
-    // Play the game
+    // Play the game!
     public static void main(String[] args) {
         new BrickBreaker();
     }

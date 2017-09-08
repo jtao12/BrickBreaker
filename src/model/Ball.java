@@ -1,4 +1,5 @@
 package model;
+
 import java.awt.*;
 import java.util.Random;
 
@@ -7,27 +8,33 @@ public class Ball extends Sprite {
     private double x_velocity;
     private double y_velocity;
     private boolean is_launched;
-    private final static int DIAMETER = 10;
-    private final static int X_OFFSET = (Game.WIDTH / 2) - DIAMETER / 2 ;
-    private final static int Y_OFFSET = Paddle.PADDLE_Y_OFFSET - Paddle.PADDLE_HEIGHT - (DIAMETER / 2) ;
-    private static final Color COLOR = new Color(65, 150, 188);
-    public static final Random RND = new Random();
+    private final static int BALL_DIAMETER = 10;
+    private final static int BALL_X_OFFSET = (Game.WIDTH / 2) - BALL_DIAMETER / 2 ;
+    private final static int BALL_Y_OFFSET = Paddle.PADDLE_Y_OFFSET - Paddle.PADDLE_HEIGHT - (BALL_DIAMETER / 2) ;
+    private static final Color BALL_COLOR = new Color(65, 150, 188);
+    private static final Random RND = new Random();
     private final static int BALL_SPEED = 5;
 
     public Ball(){
-        super(X_OFFSET, Y_OFFSET, DIAMETER, DIAMETER);
+        super(BALL_X_OFFSET, BALL_Y_OFFSET, BALL_DIAMETER, BALL_DIAMETER);
         this.x_velocity = 0.0;
         this.y_velocity = 0.0;
         this.is_launched = false;
     }
 
+    // Changes the velocity of the ball
+    // modifies: this
+    // effects: ball's velocity has been changed
     public void changeVelocity(double x, double y){
         this.x_velocity = x;
         this.y_velocity = y;
     }
 
+    // Launches the ball at a random angle
+    // modifies: this
+    // effects: changes the ball's velocity and sets launch status to true
     public void launchBall(){
-        changeVelocity(RND.nextDouble()*BALL_SPEED,-BALL_SPEED ); // launch ball and set initial speed to 10 pixels/sec
+        changeVelocity(RND.nextDouble() * BALL_SPEED, -BALL_SPEED);
         is_launched = true;
     }
 
@@ -43,6 +50,9 @@ public class Ball extends Sprite {
         return y_velocity;
     }
 
+    // Moves the ball
+    // modifies: this
+    // effects: moves ball to location at next clock tick
     @Override
     public void move(){
         x += x_velocity;
@@ -70,48 +80,43 @@ public class Ball extends Sprite {
         x_velocity = 0;
     }
 
-    // Resets the ball speed to 0
+    // Handles boundary collisions of the ball
     // modifies: this
-    // effects: ball has stopped
+    // effects: ball will bounce after colliding with the wall
     public void handleBoundary() {
-        // this makes sures the ball moves with the paddle if the ball
+        // Makes sures the ball moves with the paddle if the ball
         // has not yet been launched
         if (getLaunchStatus() == false){
-            if (x <= Paddle.PADDLE_WIDTH /2 - DIAMETER / 2){
-                x = Paddle.PADDLE_WIDTH /2 - DIAMETER / 2;
+            if (x <= Paddle.PADDLE_WIDTH /2 - BALL_DIAMETER / 2){
+                x = Paddle.PADDLE_WIDTH /2 - BALL_DIAMETER / 2;
             }
-            else if (x >= Game.WIDTH -  Paddle.PADDLE_WIDTH /2 - DIAMETER / 2) {
-                x = Game.WIDTH - Paddle.PADDLE_WIDTH / 2 - DIAMETER / 2;
+            else if (x >= Game.WIDTH -  Paddle.PADDLE_WIDTH /2 - BALL_DIAMETER / 2) {
+                x = Game.WIDTH - Paddle.PADDLE_WIDTH / 2 - BALL_DIAMETER / 2;
             }
         }
 
-        // When
+        // When ball hits the top of the screen, reverse direction of ball
         if (y <= 0) {
-            if (x_velocity == 0)
-                changeVelocity(x_velocity, -y_velocity);
-            else
-                changeVelocity(x_velocity, -y_velocity);
-
+            changeVelocity(x_velocity, -y_velocity);
         }
 
-        if ( x <= 0 || x >= 800) {
+        // When ball hits either side of the screen, reverse direction of ball
+        if (x <= 0 || x >= Game.WIDTH - BALL_DIAMETER) {
             changeVelocity(-x_velocity, y_velocity);
         }
-
-
     }
 
     // Draws the ball, and sets the color
     public void draw(Graphics g){
-        g.setColor(COLOR);
-        g.fillOval(x, y, DIAMETER, DIAMETER);
-        g.drawOval(x, y, DIAMETER, DIAMETER);
+        g.setColor(BALL_COLOR);
+        g.fillOval(x, y, BALL_DIAMETER, BALL_DIAMETER);
+        g.drawOval(x, y, BALL_DIAMETER, BALL_DIAMETER);
     }
 
     // Sets the bounding rectangle around the ball for collision detection
     @Override
     public Rectangle getBounds(){
-        Rectangle bounds = new Rectangle(x, y, DIAMETER, DIAMETER);
+        Rectangle bounds = new Rectangle(x, y, BALL_DIAMETER, BALL_DIAMETER);
         return bounds;
     }
 

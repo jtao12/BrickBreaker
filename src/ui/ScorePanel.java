@@ -1,16 +1,15 @@
 package ui;
+
 import model.Game;
 
 import javax.swing.*;
 import java.awt.*;
 
-
-
-/*
- * Represents the panel in which the scoreboard is displayed.
- */
+/** Represents the score panel **/
 @SuppressWarnings("serial")
-public class Score_Panel extends JPanel {
+
+
+public class ScorePanel extends JPanel {
     private static final String BRICKS_TEXT = "Bricks Remaining: ";
     private static final String SCORE_TEXT = "Score: ";
     private static final int LBL_WIDTH = 200;
@@ -22,7 +21,7 @@ public class Score_Panel extends JPanel {
     // Constructs a score panel
     // effects: sets the background colour and draws the initial labels;
     //          updates this with the game whose score is to be displayed
-    public Score_Panel(Game g) {
+    public ScorePanel(Game g) {
         game = g;
         setBackground(new Color(54, 54, 54));
         bricksLbl = new JLabel(BRICKS_TEXT + game.getNumBricksLeft());
@@ -38,8 +37,7 @@ public class Score_Panel extends JPanel {
 
     // Updates the score panel
     // modifies: this
-    // effects:  updates number of invaders shot and number of missiles
-    //           remaining to reflect current state of game
+    // effects:  updates number of bricks left and score
     public void update() {
         bricksLbl.setText(BRICKS_TEXT + game.getNumBricksLeft());
         scoreLbl.setText(SCORE_TEXT );
