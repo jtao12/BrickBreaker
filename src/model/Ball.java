@@ -65,6 +65,8 @@ public class Ball extends Sprite {
     }
 
     public void handleBoundary() {
+        // this makes sures the ball moves witht the paddle if the ball has not yet been
+        // launched
         if (getLaunchStatus() == false){
             if (x <= Paddle.WIDTH /2 - DIAMETER / 2){
                 x = Paddle.WIDTH /2 - DIAMETER / 2;
@@ -73,7 +75,7 @@ public class Ball extends Sprite {
                 x = Game.WIDTH - Paddle.WIDTH / 2 - DIAMETER / 2;
             }
         }
-        if (y <= 0 || y >= 600) {
+        if (y <= 0) {
             if (x_velocity == 0)
                 changeVelocity(x_velocity + 1, -y_velocity);
             else
@@ -81,16 +83,15 @@ public class Ball extends Sprite {
 
         }
 
-        if (x <= 0 || x >= 800) {
+        if ( x <= 0 || x >= 800) {
             changeVelocity(-x_velocity, y_velocity);
         }
+
 
     }
 
 
-    // TODO
     public void draw(Graphics g){
-        Color savedCol = g.getColor();
         g.setColor(COLOR);
         g.fillOval(x, y, DIAMETER, DIAMETER);
         g.drawOval(x, y, DIAMETER, DIAMETER);

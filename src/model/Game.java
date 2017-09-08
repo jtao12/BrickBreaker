@@ -157,14 +157,12 @@ public class Game {
         moveBall();
         movePaddle();
         checkCollisions();
+        isgameover();
     }
 
     // Is game over?
     // Effects: returns true if game is over, false otherwise
     public boolean isOver() {
-        if (ball.getX() < 0){
-            isGameOver = true;
-        }
         return isGameOver;
     }
 
@@ -228,6 +226,18 @@ public class Game {
                     numBricksLeft--;
                 }
             }
+        }
+    }
+
+    public void isgameover(){
+  /*      if (numBricksLeft == 0)
+            return; // TODO: something ror winning
+            */
+        if (ball.getY() >= HEIGHT){
+            isGameOver = true;
+        }
+        if (isGameOver){
+            initializeSprites();
         }
     }
 
