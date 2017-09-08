@@ -236,6 +236,7 @@ public class Game {
     public void isgameover(){
         if (numBricksLeft == 0){
             isGamewon = true;
+            ball.changeVelocity(0,0);
         }
 
         if (ball.getY() >= HEIGHT){
