@@ -10,7 +10,7 @@ import java.awt.*;
  */
 public class Game_View extends JPanel {
     private static final String you_lose = "Loser";
-    private static final String restart = "Hit space bar to restart";
+    private static final String restart = "R to replay";
     private Game game;
 
     // Make a Game_view

@@ -40,7 +40,6 @@ public class Game {
         sprites = new ArrayList<Sprite>();
         initializeSprites();
         reset();
-
     }
 
     // Initializes sprites
