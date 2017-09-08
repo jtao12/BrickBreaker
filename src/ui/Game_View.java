@@ -30,7 +30,7 @@ public class Game_View extends JPanel {
             gameOver(g);
         }
 
-        if (game.iswon()){
+        if (game.isWon()){
             you_win(g);
         }
     }

@@ -10,37 +10,36 @@ import java.util.Random;
  * Created by justi on 8/28/2017.
  */
 public class Game {
+
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
-    public static final Random RND = new Random(); // TODO: What is this for?????
+    public static final Random RND = new Random();
+    private List<Sprite> sprites;
+    private Paddle paddle;
+    private Ball ball;
+    private int numBricksLeft = NBRICK_ROWS * NBRICKS_COLS;
+    private boolean isGameOver;
+    private boolean isGameWon;
 
     /** Number of columns of bricks */
     private static final int NBRICKS_COLS = 5;
     /** Number of rows of bricks */
-    private static final int NBRICK_ROWS = 1;
+    private static final int NBRICK_ROWS = 5;
     /** Separation between bricks */
     private static final int BRICK_SEP = 5;
     /** Width of a brick */
-    private static final int BRICK_WIDTH =
-            (WIDTH - (NBRICKS_COLS - 1) * BRICK_SEP) / NBRICKS_COLS;
+    private static final int BRICK_WIDTH =(WIDTH - (NBRICKS_COLS - 1) * BRICK_SEP) / NBRICKS_COLS;
     /** Height of a brick */
     private static final int BRICK_HEIGHT = 30;
-    /** Offset of the top brick row from the top */
-    private static final int BRICK_Y_OFFSET = 70;
-
-    private List<Sprite> sprites;
-    private Paddle paddle;
-    private Ball ball;
-    private ArrayList<Brick> bricks;
-    private boolean isGameOver;
-    private int numBricksLeft = NBRICK_ROWS * NBRICKS_COLS;   //
-    private boolean isGamewon;
+    /** Color array of brick colors */
     private Color[] colors = new Color[5];
+
 
     public Game(){
         sprites = new ArrayList<Sprite>();
         initializeSprites();
-        isGamewon = false;
+        isGameWon = false;
+        isGameOver = false;
         reset();
     }
 
@@ -50,6 +49,7 @@ public class Game {
     private void initializeSprites() {
         sprites.clear();
         initializeBricks();
+        numBricksLeft = NBRICK_ROWS * NBRICKS_COLS;
         paddle = new Paddle();
         ball = new Ball();
         sprites.add(paddle);
@@ -58,13 +58,6 @@ public class Game {
 
     // Initializes bricks
     // effects:  sets up list of sprites bricks
-//    private void initializeBricks() {
-//        for (int i = 0; i < 5; i++){
-//            Brick aBrick = new Brick(20 * i + i * 50,100,COLOR);
-//            sprites.add(aBrick);
-//        }
-//    }
-
     private void initializeBricks() {
         colors[0] = new Color(0xFF9E25);
         colors[1] = new Color(0xFF9E25);
@@ -114,7 +107,7 @@ public class Game {
         }
         else if (keyCode == KeyEvent.VK_SPACE && !ball.getLaunchStatus())
             ball.launchBall();
-        else if (keyCode == KeyEvent.VK_R && isGameOver)
+        else if (keyCode == KeyEvent.VK_R && (isGameOver || isGameWon))
             reset();
         else if (keyCode == KeyEvent.VK_X)
             System.exit(0);
@@ -144,7 +137,6 @@ public class Game {
         paddle.move();
     }
 
-
     // Sets / resets the game
     // modifies: this
     // effects:  resets number of missiles in play and number of invaders destroyed;
@@ -152,16 +144,14 @@ public class Game {
     private void reset() {
         initializeSprites();
         isGameOver = false;
-        isGamewon = false;
-        numBricksLeft = NBRICK_ROWS * NBRICKS_COLS;
+        isGameWon = false;
         }
-
 
     public void update() {
         moveBall();
         movePaddle();
         checkCollisions();
-        isgameover();
+        isGameOver();
     }
 
     // Is game over?
@@ -170,7 +160,7 @@ public class Game {
         return isGameOver;
     }
 
-    // Checks how many bricks are left
+    // Returns bricks left in play
     public int getNumBricksLeft() {
         return numBricksLeft;
     }
@@ -183,7 +173,7 @@ public class Game {
         ball.handleBoundary();
         List<Sprite> toBeRemoved = new ArrayList<Sprite>();
         if (ball.collidedWith(paddle)){
-            boundary_paddlecollision();
+            paddleCollision();
         }
         for (Sprite next : sprites) {
             if (next instanceof Brick) {
@@ -196,25 +186,19 @@ public class Game {
 
     // Randomly changes the speed of the ball depending where it collides
     // with the paddle
-
-    private void boundary_paddlecollision(){
+    private void paddleCollision(){
         int ball_x = ball.getX();
-        int paddle_3rds = paddle.getWidth() / 3;
-        if (ball_x <= paddle_3rds + paddle.getX()){
+        int paddleThirds = paddle.getWidth() / 3;
+        if (ball_x <= paddleThirds + paddle.getX()){
             ball.changeVelocity((RND.nextInt(4) - 5), -Math.abs(ball.getY_velocity()));
         }
-        else if (ball_x <= paddle_3rds * 2 + paddle.getX()){
+        else if (ball_x <= paddleThirds * 2 + paddle.getX()){
             ball.changeVelocity((RND.nextInt(2)-1), -Math.abs(ball.getY_velocity()));
         }
         else {
             ball.changeVelocity((RND.nextInt(4) + 1) , -Math.abs(ball.getY_velocity()));
-
         }
     }
-
-
-
-
 
 
     // Has a given brick been hit by a ball?
@@ -233,9 +217,9 @@ public class Game {
         }
     }
 
-    public void isgameover(){
+    public void isGameOver(){
         if (numBricksLeft == 0){
-            isGamewon = true;
+            isGameWon = true;
             ball.changeVelocity(0,0);
         }
 
@@ -244,8 +228,7 @@ public class Game {
         }
     }
 
-    public boolean iswon(){
-        return isGamewon;
+    public boolean isWon(){
+        return isGameWon;
     }
-
 }
