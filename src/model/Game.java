@@ -33,7 +33,7 @@ public class Game {
     private Ball ball;
     private ArrayList<Brick> bricks;
     private boolean isGameOver;
-    private int numBricksLeft;   //
+    private int numBricksLeft = NBRICK_ROWS * NBRICKS_COLS;   //
     private Color[] colors = new Color[5];
 
     public Game(){
@@ -150,7 +150,7 @@ public class Game {
     private void reset() {
         initializeSprites();
         isGameOver = false;
-        numBricksLeft = 15;
+        numBricksLeft = NBRICK_ROWS * NBRICKS_COLS;
         }
 
 

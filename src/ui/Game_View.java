@@ -38,10 +38,10 @@ public class Game_View extends JPanel {
 
     private void gameOver(Graphics g){
         g.setColor(new Color(255, 255, 255));
-        g.setFont(new Font("Times New Roman", 20, 20));
+        g.setFont(new Font("Calibri", Font.BOLD, 28));
         FontMetrics fm = g.getFontMetrics();
-        g.drawString(you_lose, Game.WIDTH /2 - fm.stringWidth(you_lose), Game.HEIGHT / 2);
-        g.drawString(restart, Game.WIDTH /2 - fm.stringWidth(restart), Game.HEIGHT / 2 + 50);
+        g.drawString(you_lose, Game.WIDTH /2 - fm.stringWidth(you_lose) / 2, Game.HEIGHT / 2);
+        g.drawString(restart, Game.WIDTH /2 - fm.stringWidth(restart) / 2, Game.HEIGHT / 2 + 50);
     }
 
 
