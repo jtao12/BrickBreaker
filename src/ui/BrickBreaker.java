@@ -1,17 +1,14 @@
 package ui;
 
-
 import model.Game;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+// Represents the main window in which the Brick Breaker
+// game is played
+//
 
-/*
- * Represents the main window in which the space invaders
- * game is played
- */
 @SuppressWarnings("serial")
 
 // Let this be our controller

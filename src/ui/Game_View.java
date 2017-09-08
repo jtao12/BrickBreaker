@@ -9,7 +9,7 @@ import java.awt.*;
  * Created by Lauren on 2017-09-01.
  */
 public class Game_View extends JPanel {
-    private static final String you_lose = "Loser";
+    private static final String you_lose = "You Lost";
     private static final String restart = "R to replay";
     private static final String Win = "You win";
     private Game game;
@@ -26,11 +26,11 @@ public class Game_View extends JPanel {
     protected void paintComponent(Graphics g){
         super.paintComponent(g);
         drawGame(g);
-        if (game.isOver()){
+        if (game.getIsGameOver()){
             gameOver(g);
         }
 
-        if (game.isWon()){
+        if (game.getIsGameWon()){
             you_win(g);
         }
     }
