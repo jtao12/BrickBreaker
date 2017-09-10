@@ -31,8 +31,9 @@ public abstract class Sprite {
         return width;
     }
 
-    public int getHeight() {
-        return height;
+
+    public void setWidth(int input){
+        this.width = input;
     }
 
     // Moves the sprite

@@ -53,6 +53,8 @@ public class BrickBreaker extends JFrame {
         );
     }
 
+
+
     // Centres frame on desktop
     // modifies: this
     // effects: location of frame is set so frame is centred on desktop
@@ -72,6 +74,7 @@ public class BrickBreaker extends JFrame {
         @Override
         public void keyReleased(KeyEvent e){
             game.keyReleased();
+
         }
     }
 

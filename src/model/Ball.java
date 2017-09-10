@@ -8,12 +8,14 @@ public class Ball extends Sprite {
     private double x_velocity;
     private double y_velocity;
     private boolean is_launched;
-    private final static int BALL_DIAMETER = 10;
-    private final static int BALL_X_OFFSET = (Game.WIDTH / 2) - BALL_DIAMETER / 2 ;
-    private final static int BALL_Y_OFFSET = Paddle.PADDLE_Y_OFFSET - Paddle.PADDLE_HEIGHT - (BALL_DIAMETER / 2) ;
-    private final static Color BALL_COLOR = new Color(65, 150, 188);
-    private final static Random RND = new Random();
+
+    public final static int BALL_DIAMETER = 50;
+    public final static Color BALL_COLOR = new Color(65, 150, 188);
     public final static int BALL_SPEED = 5;
+    private final static int BALL_X_OFFSET = (Game.WIDTH / 2) - BALL_DIAMETER / 2 ;
+    private final static int BALL_Y_OFFSET = Paddle.PADDLE_Y_OFFSET - BALL_DIAMETER - 2;
+    private final static Random RND = new Random();
+
 
 
     public Ball(){
@@ -60,14 +62,14 @@ public class Ball extends Sprite {
         y += y_velocity;
     }
 
-    // Moves the ball left
+    // Moves the ball left, used when ball has not been launched yet
     // modifies: this
     // effects: ball has been moved
     public void moveLeft() {
         x_velocity = -Paddle.PADDLE_SPEED;
     }
 
-    // Moves the ball right
+    // Moves the ball right, used when ball has not been launched yet
     // modifies: this
     // effects: ball has been moved
     public void moveRight(){
@@ -111,6 +113,7 @@ public class Ball extends Sprite {
                 changeVelocity(-x_velocity, y_velocity);
         }
     }
+
 
     // Draws the ball, and sets the color
     public void draw(Graphics g){

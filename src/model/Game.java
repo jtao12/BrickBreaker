@@ -2,9 +2,9 @@ package model;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
+
 
 /*****************************************************************
  * BrickBreaker v.1.0                                            *
@@ -25,11 +25,14 @@ public class Game {
     private int numBricksLeft;
     private int score;
     private static final int SCORE_MULTIPLIER = 100;
+    private boolean isPoweredUp;
     private boolean isGameOver;
     private boolean isGameWon;
 
+    public static Timer t;
+
     // Number of columns of bricks
-    private static final int NBRICK_COLS = 5;
+    private static final int NBRICK_COLS = 10;
     // Number of rows of bricks
     private static final int NBRICK_ROWS = 5;
     // Separation between bricks
@@ -47,6 +50,7 @@ public class Game {
         initializeSprites();
         isGameWon = false;
         isGameOver = false;
+        isPoweredUp = false;
         reset();
     }
 
@@ -59,6 +63,7 @@ public class Game {
         numBricksLeft = NBRICK_ROWS * NBRICK_COLS;
         score = 0;
         paddle = new Paddle();
+        paddle.setPaddleWidth(90);
         ball = new Ball();
         sprites.add(paddle);
         sprites.add(ball);
@@ -96,6 +101,7 @@ public class Game {
                 // Adds brick with the color corresponding to its row, and a score
                 // higher bricks are worth more points
                 Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, colors[row], SCORE_MULTIPLIER * Math.abs(NBRICK_ROWS - row));
+                aBrick.setPowerup_Extend(true);
                 sprites.add(aBrick);
             }
         }
@@ -263,8 +269,39 @@ public class Game {
                     ball.changeVelocity(ball.getX_velocity(), -ball.getY_velocity());
                     numBricksLeft--;
                     score += target.brickScore;
+                    if (target.powerup_Extend && !isPoweredUp){
+
+                        powerUp();
+
+                    }
                 }
             }
         }
+    }
+
+    private void powerUp(){
+        paddle.setPaddleWidth(180);
+        paddle.setWidth(180);
+        paddle.setPaddleColor(Color.red);
+
+
+        t = new Timer();
+        t.schedule(
+                new TimerTask() {
+                    @Override
+                    public void run() {
+                        paddle.setPaddleWidth(90);
+                        paddle.setWidth(90);
+                        isPoweredUp = false;
+                        paddle.setPaddleColor(Color.white);
+                    }
+                }, 5000
+
+        );
+        
+
+
+
+
     }
 }

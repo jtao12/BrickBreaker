@@ -4,14 +4,14 @@ import java.awt.*;
 
 /** Represents a Paddle **/
 public class Paddle extends Sprite {
-    protected static final int PADDLE_WIDTH = 90;
-    protected static final int PADDLE_HEIGHT = 10;
-    protected static final int PADDLE_X_OFFSET =  Game.WIDTH / 2 - PADDLE_WIDTH / 2 ;
-    protected static final int PADDLE_Y_OFFSET = Game.HEIGHT - 50;
-    protected static final Color PADDLE_COLOR = new Color(250, 250, 250);
+    public static int PADDLE_WIDTH = 90;
+    private static final int PADDLE_HEIGHT = 10;
+    private static final int PADDLE_X_OFFSET =  Game.WIDTH / 2 - PADDLE_WIDTH / 2 ;
+    public static final int PADDLE_Y_OFFSET = Game.HEIGHT - 50;
+    public static Color PADDLE_COLOR = new Color(250, 250, 250);
     // How fast the paddle moves
-    protected static final int PADDLE_SPEED = 10;
-    protected int PADDLE_VELOCITY = 0;
+    public static final int PADDLE_SPEED = 10;
+    private int PADDLE_VELOCITY = 0;
 
     public Paddle(){
         super(PADDLE_X_OFFSET, PADDLE_Y_OFFSET, PADDLE_WIDTH, PADDLE_HEIGHT);
@@ -68,5 +68,14 @@ public class Paddle extends Sprite {
         Rectangle bounds = new Rectangle(x, y, width,1);
         return bounds;
     }
+
+    public void setPaddleWidth(int width){
+        PADDLE_WIDTH = width;
+    }
+
+    public void setPaddleColor(Color color){
+        PADDLE_COLOR = color;
+    }
+
 
 }
