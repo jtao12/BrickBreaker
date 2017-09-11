@@ -9,7 +9,7 @@ public class Ball extends Sprite {
     private double y_velocity;
     private boolean is_launched;
 
-    public final static int BALL_DIAMETER = 50;
+    public final static int BALL_DIAMETER = 10;
     public final static Color BALL_COLOR = new Color(65, 150, 188);
     public final static int BALL_SPEED = 5;
     private final static int BALL_X_OFFSET = (Game.WIDTH / 2) - BALL_DIAMETER / 2 ;

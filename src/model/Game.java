@@ -101,7 +101,7 @@ public class Game {
                 // Adds brick with the color corresponding to its row, and a score
                 // higher bricks are worth more points
                 Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, colors[row], SCORE_MULTIPLIER * Math.abs(NBRICK_ROWS - row));
-                aBrick.setPowerup_Extend(true);
+                //aBrick.setPowerup_Extend(true);
                 sprites.add(aBrick);
             }
         }
@@ -298,7 +298,7 @@ public class Game {
                 }, 5000
 
         );
-        
+
 
 
 
