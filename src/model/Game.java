@@ -10,9 +10,12 @@ import java.util.List;
  * BrickBreaker v.1.0                                            *
  * Authors: Justin Tao, Lauren Bentley                           *
  * Acknowledgements: SpaceInvader game from UBC CPSC210 lecture  *
- * Updates: Sep. 11, 2017                                         *
- * TODOs: bug when sometimes paddle will not move right for a    *
+ * Updates: Sep. 11, 2017                                        *
+ * TODO:  bug when sometimes paddle will not move right for a    *
  *        milisecond when ball is in play                        *
+ * TODO:  bug when ball gets stuck on right side of screen       *
+ * TODO:  bug when ball diameter is big, it will destroy bricks  *
+ *        without bouncing back                                  *
  *****************************************************************/
 
 public class Game {
