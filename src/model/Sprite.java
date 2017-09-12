@@ -31,7 +31,9 @@ public abstract class Sprite {
         return width;
     }
 
-
+    // Sets the sprite width to given value
+    // modifies: this
+    // effects: sprite width will change
     public void setWidth(int input){
         this.width = input;
     }
@@ -54,6 +56,7 @@ public abstract class Sprite {
         return thisBoundingRect.intersects(otherBoundingRect);
     }
 
+    // Abstract method to get bounding rectangle of sprite
     public abstract Rectangle getBounds();
 }
 

@@ -12,7 +12,7 @@ public class GameView extends JPanel {
     private static final String YOU_WIN = "You win!";
     private Game game;
 
-    // Make a Game_View
+    // Make a GameView
     public GameView(Game g){
         setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
         setBackground(Color.BLACK);

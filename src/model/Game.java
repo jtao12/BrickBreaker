@@ -10,7 +10,7 @@ import java.util.List;
  * BrickBreaker v.1.0                                            *
  * Authors: Justin Tao, Lauren Bentley                           *
  * Acknowledgements: SpaceInvader game from UBC CPSC210 lecture  *
- * Updates: Sep. 8, 2017                                         *
+ * Updates: Sep. 11, 2017                                         *
  * TODOs: bug when sometimes paddle will not move right for a    *
  *        milisecond when ball is in play                        *
  *****************************************************************/
@@ -101,6 +101,8 @@ public class Game {
                 // Adds brick with the color corresponding to its row, and a score
                 // higher bricks are worth more points
                 Brick aBrick = new Brick( x, y, BRICK_WIDTH, BRICK_HEIGHT, colors[row], SCORE_MULTIPLIER * Math.abs(NBRICK_ROWS - row));
+
+                // TODO: Adds a powerup to a random brick, still debugging
                 //aBrick.setPowerup_Extend(true);
                 sprites.add(aBrick);
             }
@@ -279,6 +281,8 @@ public class Game {
         }
     }
 
+    // TODO: Fix issue with multiple powerUps not working correctly
+    // perhaps need to implement singleton pattern?
     private void powerUp(){
         paddle.setPaddleWidth(180);
         paddle.setWidth(180);
@@ -298,10 +302,5 @@ public class Game {
                 }, 5000
 
         );
-
-
-
-
-
     }
 }

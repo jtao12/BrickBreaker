@@ -69,10 +69,16 @@ public class Paddle extends Sprite {
         return bounds;
     }
 
+    // Sets the paddle width to given value
+    // modifies: this
+    // effects: paddle width will change (note this will NOT change sprite width)
     public void setPaddleWidth(int width){
         PADDLE_WIDTH = width;
     }
 
+    // Sets the paddle width to given color
+    // modifies: this
+    // effects: paddle color will change
     public void setPaddleColor(Color color){
         PADDLE_COLOR = color;
     }
